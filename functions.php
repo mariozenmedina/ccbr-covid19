@@ -2,6 +2,8 @@
 /*update_option( 'siteurl', 'http://blankthemaster.com.br' );
 update_option( 'home', 'http://blankthemaster.com.br' );*/
 
+//if(!is_admin() && $pagenow != 'wp-login.php' && !isset($_GET['ver'])){ die; }
+
 //FILESIZES
 @ini_set( 'upload_max_size' , '64M' );
 @ini_set( 'post_max_size', '64M');

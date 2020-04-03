@@ -17,17 +17,19 @@ $(document).ready(function(e) {
         $(".anchor").each(function(){
             var offtop = $(this).offset().top;
             var thish = $(this).height();
+            var thisc = $(this).attr('data-color');
             //var winh = $(window).height();
 
-            if ( ( offtop - 100 ) <= scrl && ( offtop + thish - 100 ) > scrl ){
+            if ( ( offtop - 300 ) <= scrl && ( offtop + thish - 300 ) > scrl ){
                 $(".go").removeClass('active');
+                $("nav").attr('data-color', thisc);
                 $("nav a[data-go="+$(this).attr('id')+"]").addClass('active');
             }
         });
     });
     
     /******************* FILTROS CARDS ********************/
-    var limite = 12;
+    var limite = 3;
     var filtros = [];
     $(".filtros a").click(function(){
         var cat = $(this).attr('data-cat');
@@ -55,4 +57,34 @@ $(document).ready(function(e) {
             if($(selector).length <= limite){ $("#oque a.mais").hide(); }else{ $("#oque a.mais").show(); }
         }
     }
+    /******************* CAROUSEL ********************/
+    var carT = $("#depos .carousel .item").length;
+    var carA = 1;
+    var carI = setInterval(function(){
+        carA = carA >= carT ? 1 : carA+1;
+        carM(carA);
+    }, 4000);
+    function carM(num){
+        var itW = $("#depos .carousel .item").outerWidth();
+        $("#depos .carousel .flow").css('left', '-'+(num-1)*itW+'px');
+        $("#depos .controls ul li").removeClass('active');
+        $("#depos .controls ul li:nth-child("+num+")").addClass('active');
+    }
+    $("#depos .carousel").click(function(){ clearInterval(carI); });
+    $("#depos .carousel .controls ul li").click(function(){
+        carA = $(this).attr('data-num');
+        carM(carA); clearInterval(carI);
+    })
+    $("#depos .carousel .controls .right").click(function(){
+        carA = carA >= carT ? 1 : carA+1;
+        carM(carA); clearInterval(carI);
+    });
+    $("#depos .carousel .controls .left").click(function(){
+        carA = carA <= 1 ? carT : carA-1;
+        carM(carA); clearInterval(carI);
+    });
+    
+    
+    
+    
 });

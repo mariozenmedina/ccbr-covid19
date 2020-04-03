@@ -669,16 +669,8 @@ ol {
     padding-bottom: 80px;
     position: relative;
   }
-  #depos .balls-line {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 48%;
-    width: 100%;
-    height: 10px;
-    background-image: url("../img/balls-line.svg");
-    background-position: left -1px center;
-    background-repeat: repeat-x;
+  #depos .container {
+    max-width: 680px !important;
   }
   #depos h2 {
     font-family: 'Aurora', 'Anton', sans-serif;
@@ -689,9 +681,180 @@ ol {
     font-size: 48px;
     max-width: 320px;
     margin: auto;
-    margin-bottom: 0px;
     position: relative;
     z-index: 2;
+  }
+  #depos .carousel {
+    height: 450px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px;
+  }
+  #depos .carousel .flow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: calc(100% - 100px);
+    width: auto;
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    transition-duration: 800ms;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  #depos .carousel .flow .item {
+    height: 100%;
+    width: calc( 100vw - 30px );
+    padding: 0px 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  #depos .carousel .flow .item .quote {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+    padding: 5px;
+    padding-top: 30px;
+  }
+  #depos .carousel .flow .item .quote::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 30px;
+    width: 30px;
+    background-image: url("../img/quote.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  #depos .carousel .flow .item .quote p {
+    font-size: 16px;
+  }
+  #depos .carousel .flow .item .quote p.sign {
+    font-weight: 800;
+    text-align: right;
+  }
+  #depos .carousel .controls {
+    max-width: 680px !important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  #depos .carousel .controls a.right,
+  #depos .carousel .controls a.left {
+    display: inline-block;
+    height: 30;
+    width: 30px;
+    position: relative;
+    z-index: 5;
+  }
+  #depos .carousel .controls .right {
+    float: left;
+  }
+  #depos .carousel .controls .right {
+    float: right;
+  }
+  #depos .carousel .controls .right img {
+    transform: rotate(180deg);
+  }
+  #depos .carousel .controls ul {
+    display: none;
+    padding: 0;
+  }
+}
+@media all and (min-width: 1200px) {
+  #depos .container {
+    max-width: 940px !important;
+  }
+}
+@media all and (min-width: 1200px) {
+  #depos .balls-line {
+    position: absolute;
+    left: 0;
+    top: 48%;
+    width: 100%;
+    height: 10px;
+    background-image: url("../img/balls-line.svg");
+    background-position: left -1px center;
+    background-repeat: repeat-x;
+  }
+}
+@media all and (min-width: 1200px) {
+  #depos .carousel {
+    height: 550px;
+  }
+}
+@media all and (min-width: 680px) {
+  #depos .carousel .flow {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #depos .carousel .flow {
+    padding-left: 185px;
+    padding-right: 185px;
+  }
+}
+@media all and (min-width: 680px) {
+  #depos .carousel .flow .item {
+    width: 540px;
+    padding: 0px 20px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #depos .carousel .flow .item {
+    width: 570px;
+    padding: 0px 20px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #depos .carousel .controls {
+    max-width: 940px !important;
+  }
+}
+@media all and (min-width: 1200px) {
+  #depos .carousel .controls ul {
+    display: block;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  #depos .carousel .controls ul li {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    background-color: #FFF;
+    border-radius: 100vh;
+    border: solid 4px #e3202b;
+    cursor: pointer;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    transition-duration: 400ms;
+    margin: 0px 2px;
+  }
+  #depos .carousel .controls ul li:hover {
+    background-color: #000;
+  }
+  #depos .carousel .controls ul li.active {
+    background-color: #e3202b;
   }
 }
 /*********************************** DUVIDA ***********************************/

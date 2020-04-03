@@ -13,7 +13,7 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="row anchor capa" id="capa">
+    <div class="row anchor capa" id="capa" data-color="branco">
         <div class="container" style="max-width: 420px !important;">
             <a class="open-menu"><img width="40" src="<?php bloginfo('template_url'); ?>/img/bars.svg"></a>
             <h1>Estamos nessa juntos</h1>
@@ -24,12 +24,12 @@
             <p>Acompanhe:</p>
         </div>
     </div>
-    <div class="row anchor como" id="como">
+    <div class="row anchor como" id="como" data-color="preto">
         <div class="container">
             <h2>Como estamos atuando</h2>
         </div>
     </div>
-    <div class="row anchor oque" id="oque">
+    <div class="row anchor oque" id="oque" data-color="preto">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -68,39 +68,69 @@
                         <p>item-circ Pausa em todas as campanhas publicitárias de Coca-Cola e de todas as nossas marcas, por tempo indeterminado. Nosso foco está em garantir a segurança e o bem-estar dos nossos associados e comunidades</p>
                     </div>
                 </div>
-                <div class="col-12 col-xl-4 item item-star item-tria item-remo item-circ">
-                    <div class="box">
-                        <p>Pausa em todas as campanhas publicitárias estar dos nossos associados e comunidades</p>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-4 item">
-                    <div class="box">
-                        <p>Pausa em todas as campanhas publicitárias de Coca-Cola e de todas as nossas marcas, por tempo indeterminado. Nosso foco está em garantir a segurança e o bem-estar dos nossos associados e comunidades</p>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-4 item">
-                    <div class="box">
-                        <span><?php svg('star','cbranco'); ?><?php svg('tria','cbranco'); ?><?php svg('remo','cbranco'); ?></span>
-                        <p>Pausa em todas as campanhas publicitárias de Coca-Cola e de todas as nossas marcas, por tempo indeterminado. Nosso foco está em garantir a segurança e o bem-estar dos nossos associados e comunidades</p>
-                    </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col-12 tc"><a class="mais">Veja mais ações +</a></div>
             </div>
         </div>
     </div>
-    <div class="row anchor onde" id="onde">
+    <div class="row anchor onde" id="onde" data-color="preto">
         <div class="container">
         </div>
     </div>
-    <div class="row anchor depos" id="depos">
+    <div class="row anchor depos" id="depos" data-color="preto">
         <div class="container">
-            <div class="balls-line"></div>
-            <h2>Depoimentos</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="balls-line"></div>
+                    <h2>Depoimentos</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 p0">
+                    <div class="carousel">
+                        <div class="flow">
+                            <div class="item">
+                                <div class="quote">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium dolor earum facilis, ex, autem iusto, ullam labore accusantium facere explicabo voluptatem porro, voluptatum consectetur animi? Perferendis a quod, omnis dolorem!</p>
+                                    <p class="sign">Douis autem</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="quote">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium dolor earum facilis, ex, autem iusto, ullam labore accusantium facere explicabo voluptatem porro, voluptatum consectetur animi? Perferendis a quod, omnis dolorem!</p>
+                                    <p class="sign">Douis autem</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="quote">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium dolor earum facilis, ex, autem iusto, ullam labore accusantium facere explicabo voluptatem porro, voluptatum consectetur animi? Perferendis a quod, omnis dolorem!</p>
+                                    <p class="sign">Douis autem</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="quote">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium dolor earum facilis, ex, autem iusto, ullam labore accusantium facere explicabo voluptatem porro, voluptatum consectetur animi? Perferendis a quod, omnis dolorem!</p>
+                                    <p class="sign">Douis autem</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <ul>
+                                <li data-num="1" class="active"></li>
+                                <li data-num="2" class=""></li>
+                                <li data-num="3" class=""></li>
+                                <li data-num="4" class=""></li>
+                            </ul>
+                            <a class="left"><img width="25" src="<?php bloginfo('template_url'); ?>/img/seta.svg"></a>
+                            <a class="right"><img width="25" src="<?php bloginfo('template_url'); ?>/img/seta.svg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row duvida" id="duvida">
+    <div class="row duvida anchor" id="duvida" data-color="branco">
         <div class="container">
             <h2>Ficou com alguma dúvida?</h2>
             <p>Entre em contato com o nosso centro de relacionamento <a href="">pelo chat</a> ou pelo telefone (21)4002-2121. <span>Estamos nessa juntos!</span></p>

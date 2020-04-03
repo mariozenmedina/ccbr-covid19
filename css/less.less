@@ -291,8 +291,48 @@ ul,ol{ list-style-type: none; }
 @media all{
     #depos{
         padding-top: 80px; padding-bottom: 80px; position: relative;
-        .balls-line{ content: ''; position: absolute; left: 0; top: 48%; width: 100%; height: 10px; background-image: url("../img/balls-line.svg"); background-position: left -1px center; background-repeat: repeat-x; }
-        h2{ .alterfont; .uc; .tc; .cpreto; .bbranco; .t48; max-width: 320px; margin: auto; margin-bottom: 0px; position: relative; z-index: 2; }
+        .container{ max-width: 680px !important; @media(min-width:1200px){ max-width: 940px !important; } }
+        .balls-line{ @media(min-width:1200px){ position: absolute; left: 0; top: 48%; width: 100%; height: 10px; background-image: url("../img/balls-line.svg"); background-position: left -1px center; background-repeat: repeat-x; } }
+        h2{ .alterfont; .uc; .tc; .cpreto; .bbranco; .t48; max-width: 320px; margin: auto; position: relative; z-index: 2; }
+        .carousel{
+            height: 450px; width: 100%; position: relative; overflow: hidden; margin-top: 60px;
+            @media(min-width:1200px){ height: 550px; }
+            .flow{
+                position: absolute; left: 0; top: 0; height: ~"calc(100% - 100px)"; width: auto; width: max-content; display: flex; flex-direction: row; .transition; transition-duration: 800ms;
+                padding-left: 15px; padding-right: 15px;
+                @media(min-width:680px){ padding-left: 70px; padding-right: 70px; }
+                @media(min-width:1200px){ padding-left: 185px; padding-right: 185px; }
+                .item{
+                    height: 100%; width: ~"calc( 100vw - 30px )"; padding: 0px 10px; overflow: hidden; display: flex; align-items: center;
+                    @media(min-width:680px){ width: 540px; padding: 0px 20px; }
+                    @media(min-width:1200px){ width: 570px; padding: 0px 20px; }
+                    .quote{
+                        position: relative; max-width: 400px; margin: auto; .p5; padding-top: 30px;
+                        &::before{ content: ''; position: absolute; left: 0; top: 0; height: 30px; width: 30px; background-image: url("../img/quote.svg"); background-size: contain; background-repeat: no-repeat; }
+                        p{ .t16; &.sign{ .w800; .tr; } }
+                    }
+                }
+            }
+            .controls{
+                max-width: 680px !important; @media(min-width:1200px){ max-width: 940px !important; }
+                position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: 50px; padding-left: 15px; padding-right: 15px;
+                a.right, a.left{ .ib; height: 30; width: 30px; position: relative; z-index: 5; }
+                .right{ float: left; }
+                .right{ float: right; img{ transform: rotate(180deg); } }
+                ul{
+                    display: none; .p0;
+                    @media(min-width:1200px){
+                        display: block;
+                        .tc; position: absolute; bottom: 0; left: 0; width: 100%; z-index: 2;
+                        li{
+                            .ib; height: 25px; width: 25px; .bbranco; .rd100; border: solid 4px @vermelho; cursor: pointer; .transition; transition-duration: 400ms; margin: 0px 2px;
+                            &:hover{ .bpreto; }
+                            &.active{ .bvermelho; }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
