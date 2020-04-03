@@ -52,3 +52,21 @@ function pagination($prev='&laquo;',$next='&raquo;'){
 	}
 	echo paginate_links( $pagination );
 };
+
+//ELEMENTOS
+function svg($item, $class){
+    switch ($item){
+        case 'circ':
+            echo '<svg class="'.$class.'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><g id="Camada_2" data-name="Camada 2"><g id="desktop"><circle cx="9" cy="9" r="9" style="fill:#000"/></g></g></svg>';
+            break;
+        case 'tria':
+            echo '<svg class="'.$class.'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.07 17.03"><g id="Camada_2" data-name="Camada 2"><g id="desktop"><path d="M7.84,1,.26,14.1A2,2,0,0,0,2,17H17.11A2,2,0,0,0,18.8,14.1L11.23,1A2,2,0,0,0,7.84,1Z" style="fill:#000"/></g></g></svg>';
+            break;
+        case 'star':
+            echo '<svg class="'.$class.'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.99 20"><g id="Camada_2" data-name="Camada 2"><g id="desktop"><path d="M10.84.22l2.94,6a.41.41,0,0,0,.3.21l6.58,1a.39.39,0,0,1,.21.66l-4.76,4.64A.4.4,0,0,0,16,13l1.12,6.56a.38.38,0,0,1-.56.4l-5.88-3.09a.4.4,0,0,0-.37,0L4.43,20a.38.38,0,0,1-.56-.4L5,13a.4.4,0,0,0-.11-.34L.12,8a.38.38,0,0,1,.21-.66l6.58-1a.38.38,0,0,0,.29-.21l3-6A.38.38,0,0,1,10.84.22Z" style="fill:#000"/></g></g></svg>';
+            break;
+        case 'remo':
+            echo '<svg class="'.$class.'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.01 18.01"><g id="Camada_2" data-name="Camada 2"><g id="desktop"><rect x="5.55" y="-1.45" width="6.91" height="20.91" rx="2.08" transform="translate(-3.73 9) rotate(-45)" style="fill:#000"/><rect x="5.55" y="-1.45" width="6.91" height="20.91" rx="2.01" transform="translate(9 -3.73) rotate(45)" style="fill:#000"/></g></g></svg>';
+            break;
+    }
+}

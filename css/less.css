@@ -313,22 +313,19 @@ ol {
   line-height: 200%;
 }
 /*********************************** GRID ***********************************/
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .container {
     max-width: 420px !important;
+    position: relative;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .container {
     max-width: 940px !important;
-    padding-left: 140px;
-    padding-right: 140px;
+    position: relative;
   }
 }
 /*********************************** NAV - MENU ***********************************/
-body {
-  min-height: 6000px;
-}
 @media (max-width: 991px) {
   nav#menu h1 {
     display: none;
@@ -398,8 +395,8 @@ body {
     left: 0;
     top: 0;
     height: 100%;
-    width: 300px;
-    z-index: 999;
+    width: 200px;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     padding-top: 50px;
@@ -481,6 +478,7 @@ body {
     padding: 10px;
     line-height: 100%;
     font-size: 36px;
+    z-index: 99;
   }
   #capa h1 {
     font-family: 'Aurora', 'Anton', sans-serif;
@@ -527,5 +525,216 @@ body {
     max-width: 260px;
     margin: auto;
     margin-bottom: 40px;
+  }
+}
+/*********************************** OQUE ***********************************/
+@media all {
+  #oque {
+    padding-top: 0px;
+    padding-bottom: 80px;
+    position: relative;
+  }
+  #oque .balls-line {
+    width: 100%;
+    height: 10px;
+    background-image: url("../img/balls-line.svg");
+    background-position: left -1px center;
+    background-repeat: repeat-x;
+    margin-bottom: 80px;
+  }
+  #oque h2 {
+    font-family: 'Aurora', 'Anton', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: #e3202b;
+    background-color: #FFF;
+    font-size: 48px;
+    max-width: 260px;
+    margin: auto;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 2;
+  }
+  #oque .filtros {
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+  #oque .filtros > div {
+    justify-content: center;
+    display: flex;
+  }
+  #oque .filtros a {
+    display: block;
+    text-transform: uppercase;
+    color: #e3202b;
+    font-size: 16px;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    position: relative;
+    font-weight: 800;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    transition-duration: 350;
+    min-width: 120px;
+  }
+  #oque .filtros a svg {
+    display: inline-block;
+    width: 35px;
+    padding: 5px 10px 30px 5px;
+    float: left;
+  }
+  #oque .filtros a svg g,
+  #oque .filtros a svg path,
+  #oque .filtros a svg rect,
+  #oque .filtros a svg circle {
+    fill: #e3202b !important;
+  }
+  #oque .filtros a.active {
+    color: #000;
+  }
+  #oque .filtros a.active svg g,
+  #oque .filtros a.active svg path,
+  #oque .filtros a.active svg rect,
+  #oque .filtros a.active svg circle {
+    fill: #000 !important;
+  }
+  #oque .itens .item {
+    padding: 15px;
+  }
+  #oque .itens .item .box {
+    padding: 25px;
+    padding-top: 50px;
+    min-height: 280px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: #e3202b;
+    background-image: linear-gradient(to bottom left, #c10009, #e3202b);
+    -webkit-box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.31);
+    box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.31);
+  }
+  #oque .itens .item .box span {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  #oque .itens .item .box span svg.cbranco {
+    width: 30px;
+    display: inline-block;
+    padding: 5px;
+  }
+  #oque .itens .item .box span svg.cbranco g,
+  #oque .itens .item .box span svg.cbranco path,
+  #oque .itens .item .box span svg.cbranco rect,
+  #oque .itens .item .box span svg.cbranco circle {
+    fill: #FFF !important;
+  }
+  #oque .itens .item .box p {
+    color: #FFF;
+    line-height: 160%;
+    font-size: 14px;
+  }
+  #oque .mais {
+    font-family: 'Aurora', 'Anton', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #000;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 5px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #oque {
+    padding-top: 80px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #oque .balls-line {
+    position: absolute;
+    left: 0;
+    top: 48%;
+    margin-bottom: 0px;
+  }
+}
+/*********************************** DEPOIMENTOS ***********************************/
+@media all {
+  #depos {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+  }
+  #depos .balls-line {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 48%;
+    width: 100%;
+    height: 10px;
+    background-image: url("../img/balls-line.svg");
+    background-position: left -1px center;
+    background-repeat: repeat-x;
+  }
+  #depos h2 {
+    font-family: 'Aurora', 'Anton', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: #000;
+    background-color: #FFF;
+    font-size: 48px;
+    max-width: 320px;
+    margin: auto;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 2;
+  }
+}
+/*********************************** DUVIDA ***********************************/
+@media all {
+  #duvida {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+    background-color: #e3202b;
+  }
+  #duvida h2 {
+    font-family: 'Aurora', 'Anton', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FFF;
+    font-size: 48px;
+    max-width: 320px;
+    margin: auto;
+    margin-bottom: 50px;
+  }
+  #duvida p {
+    color: #FFF;
+    max-width: 360px;
+    margin: auto;
+    margin-bottom: 3em;
+    font-size: 18px;
+    text-align: center;
+  }
+  #duvida p a {
+    text-decoration: underline !important;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+  }
+  #duvida p a:hover {
+    color: #000;
+  }
+  #duvida p span {
+    display: block;
+    text-transform: uppercase;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
   }
 }

@@ -171,11 +171,10 @@ ul,ol{ list-style-type: none; }
 .lh200{line-height: 200%;}
 
 /*********************************** GRID ***********************************/
-@media (max-width:991px){ .container{ max-width: 420px !important; } }
-@media (min-width:992px){ .container{ max-width: 940px !important; padding-left: 140px; padding-right: 140px; } }
+@media (max-width:1199px){ .container{ max-width: 420px !important; position: relative; } }
+@media (min-width:1200px){ .container{ max-width: 940px !important; position: relative; } }
 
 /*********************************** NAV - MENU ***********************************/
-body{ min-height: 6000px; }
 @media (max-width:991px){
     nav#menu{
         h1{ display: none; }
@@ -203,7 +202,7 @@ body{ min-height: 6000px; }
 }
 @media (min-width:992px){
     nav#menu{
-        position: fixed; left: 0; top: 0; height: 100%; width: 300px; z-index: 999;
+        position: fixed; left: 0; top: 0; height: 100%; width: 200px; z-index: 9999;
         display: flex; flex-direction: column; padding-top: 50px;
         h1{ .mb1; img{ width: 128px; } }
         ul{
@@ -233,7 +232,7 @@ body{ min-height: 6000px; }
 @media all{
     #capa{
         .bvermelho; padding-top: 80px; padding-bottom: 80px; position: relative;
-        a.open-menu{ position: fixed; top: 0; right: 0; .p10; .lh100; .t36; @media(min-width:992px){ display: none !important; } }
+        a.open-menu{ position: fixed; top: 0; right: 0; .p10; .lh100; .t36; z-index: 99; @media(min-width:992px){ display: none !important; } }
         h1{ .alterfont; .uc; .tc; .cbranco; .t48; max-width: 260px; margin: auto; margin-bottom: 40px; }
         .logo{ max-width: 100%; width: 200px; .bl; margin: auto; margin-bottom: 40px; }
         p{ .t14; .cbranco; .lh180; .mb2; }
@@ -245,5 +244,67 @@ body{ min-height: 6000px; }
     #como{
         padding-top: 80px; padding-bottom: 80px; position: relative;
         h2{ .alterfont; .uc; .tc; .cpreto; .t48; max-width: 260px; margin: auto; margin-bottom: 40px; }
+    }
+}
+
+/*********************************** OQUE ***********************************/
+@media all{
+    #oque{
+        padding-top: 0px; padding-bottom: 80px; position: relative;
+        @media(min-width:1200px){ padding-top: 80px; }
+        .balls-line{
+            width: 100%; height: 10px; background-image: url("../img/balls-line.svg"); background-position: left -1px center; background-repeat: repeat-x; margin-bottom: 80px;
+            @media(min-width:1200px){ position: absolute; left: 0; top: 48%; margin-bottom: 0px; }
+        }
+        h2{ .alterfont; .uc; .tc; .cvermelho; .bbranco; .t48; max-width: 260px; margin: auto; margin-bottom: 0px; position: relative; z-index: 2; }
+        .filtros{
+            padding-top: 40px; padding-bottom: 20px;
+            &>div{ justify-content: center; display: flex; }
+            a{
+                .bl; .uc; .cvermelho; .t16; .alterfont; position: relative; .w800; .transition; transition-duration: 350; min-width: 120px;
+                svg{.ib; width: 35px; padding: 5px 10px 30px 5px; float: left; g,path,rect,circle{ fill: @vermelho !important; } }
+                &.active{ .cpreto; svg{ g,path,rect,circle{ fill: @preto !important; } } }
+            }
+        }
+        .itens{
+            .item{
+                padding: 15px;
+                .box{
+                    padding: 25px; padding-top: 50px; min-height: 280px; height: 100%; display: flex; align-items: center; position: relative;
+                    .bvermelho; background-image: linear-gradient(to bottom left, @vermelho - @escuro, @vermelho);
+                    -webkit-box-shadow: 10px 10px 10px -1px rgba(0,0,0,0.31);
+                    -moz-box-shadow: 10px 10px 10px -1px rgba(0,0,0,0.31);
+                    box-shadow: 10px 10px 10px -1px rgba(0,0,0,0.31);
+                    span{
+                        position: absolute; top: 5px; left: 5px;
+                        svg.cbranco{ width: 30px; .ib; .p5; g,path,rect,circle{ fill: @branco !important; } }
+                    }
+                    p{ .cbranco; .lh160; .t14; }
+                }
+            }
+        }
+        .mais{ .alterfont; .w800; .t16; .cpreto; .uc; .ib; .p5; margin-top: 50px; margin-bottom: 50px; }
+    }
+}
+
+/*********************************** DEPOIMENTOS ***********************************/
+@media all{
+    #depos{
+        padding-top: 80px; padding-bottom: 80px; position: relative;
+        .balls-line{ content: ''; position: absolute; left: 0; top: 48%; width: 100%; height: 10px; background-image: url("../img/balls-line.svg"); background-position: left -1px center; background-repeat: repeat-x; }
+        h2{ .alterfont; .uc; .tc; .cpreto; .bbranco; .t48; max-width: 320px; margin: auto; margin-bottom: 0px; position: relative; z-index: 2; }
+    }
+}
+
+/*********************************** DUVIDA ***********************************/
+@media all{
+    #duvida{
+        padding-top: 80px; padding-bottom: 80px; position: relative; .bvermelho;
+        h2{ .alterfont; .uc; .tc; .cbranco; .t48; max-width: 320px; margin: auto; margin-bottom: 50px; }
+        p{
+            .cbranco; max-width: 360px; margin: auto; .mb3; .t18; .tc;
+            a{ text-decoration: underline !important; .transition; &:hover{ .cpreto; } }
+            span{ .bl; .uc; .alterfont; .w800; .t22; }
+        }
     }
 }
