@@ -57,6 +57,7 @@ $(document).ready(function(e) {
             if($(selector).length <= limite){ $("#oque a.mais").hide(); }else{ $("#oque a.mais").show(); }
         }
     }
+    $("#oque a.mais").click(function(){ limite+=3; filtrar(); });
     /******************* CAROUSEL ********************/
     var carT = $("#depos .carousel .item").length;
     var carA = 1;
@@ -83,8 +84,27 @@ $(document).ready(function(e) {
         carA = carA <= 1 ? carT : carA-1;
         carM(carA); clearInterval(carI);
     });
-    
-    
-    
-    
+    /******************* MAPA ********************/
+    $("#mapa .regiao").click(function(evt){
+        var x = ( evt.pageX - $(this).offset().left ) / $(this).width() * 100;
+        var y = ( evt.pageY - $(this).offset().top ) / $(this).height() * 100;
+        var pP;
+        var pD = 99999;
+        $("#mapa .pin").each(function(){
+            var pX = $(this).attr('data-x');
+            var pY = $(this).attr('data-y');
+            var dist = Math.sqrt( Math.pow((x-pX), 2) + Math.pow((y-pY), 2) );
+            if(dist < pD){
+                pD = dist; pP = $(this).attr('data-id');
+            }
+        });
+//        $("#mapa .pin").removeClass('scale');
+//        $("#mapa .pin#pin"+pP).addClass('scale');
+        
+        $("#mapa .bloco p.uf span").html($("#mapa .pin#pin"+pP).attr('data-uf'));
+        $("#mapa .bloco p.cidade").html($("#mapa .pin#pin"+pP).attr('data-cidade'));
+        $("#mapa .bloco .ator h3").html($("#mapa .pin#pin"+pP).attr('data-nome'));
+        $("#mapa .bloco").show();
+    });
+    $("#mapa .close-card").click(function(){ $("#mapa .bloco").hide(); });
 });

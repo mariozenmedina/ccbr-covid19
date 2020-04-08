@@ -29,6 +29,7 @@
 	@cor: extract(@color, 2);
     .c@{nome} { color: @cor; }
 	.b@{nome} { background-color: @cor; }
+    .bg@{nome} { background-color: @cor; background-image: linear-gradient(to bottom, @cor 0%, @cor - #222 100%); }
 }
 .color-classes();
 
@@ -170,6 +171,19 @@ ul,ol{ list-style-type: none; }
 .lh180{line-height: 180%;}
 .lh200{line-height: 200%;}
 
+/*********************************** ANIMATION ***********************************/
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 /*********************************** GRID ***********************************/
 @media (max-width:1199px){ .container{ max-width: 420px !important; position: relative; } }
 @media (min-width:1200px){ .container{ max-width: 940px !important; position: relative; } }
@@ -195,16 +209,13 @@ ul,ol{ list-style-type: none; }
                 }
             }
         }
-        &.cbranco{
-            ul{ li{ a{ &::after{ .bbranco; } } } }
-        }
     }
 }
 @media (min-width:992px){
     nav#menu{
         position: fixed; left: 0; top: 0; height: 100%; width: 200px; z-index: 9999;
         display: flex; flex-direction: column; padding-top: 50px;
-        h1{ .mb1; img{ width: 128px; } }
+        h1{ .mb1; svg{ width: 128px; g,path,rect,circle{ fill: @preto !important; } } }
         ul{
             .m0; .p0; width: 100px; display: block !important;
             a.close-menu{ display: none !important; }
@@ -222,8 +233,9 @@ ul,ol{ list-style-type: none; }
                 }
             }
         }
-        &.cbranco{
-            ul{ li{ a{ &::after{ .bbranco; } } } }
+        &[data-color=branco]{
+            h1{ svg{ g,path,rect,circle{ fill: @branco !important; } } }
+            ul{ li{ a{ .cbranco; &::after{ .bbranco; } } } }
         }
     }
 }
@@ -231,19 +243,104 @@ ul,ol{ list-style-type: none; }
 /*********************************** CAPA ***********************************/
 @media all{
     #capa{
+        .container{ max-width: 640px; @media(min-width:992px){ max-width: 940px; } }
         .bvermelho; padding-top: 80px; padding-bottom: 80px; position: relative;
         a.open-menu{ position: fixed; top: 0; right: 0; .p10; .lh100; .t36; z-index: 99; @media(min-width:992px){ display: none !important; } }
-        h1{ .alterfont; .uc; .tc; .cbranco; .t48; max-width: 260px; margin: auto; margin-bottom: 40px; }
+        h1{ .alterfont; .uc; .tc; .cbranco; .t48; max-width: 260px; margin: auto; margin-bottom: 40px; @media(min-width:1200px){ .t72; max-width: 360px; }  }
         .logo{ max-width: 100%; width: 200px; .bl; margin: auto; margin-bottom: 40px; }
         p{ .t14; .cbranco; .lh180; .mb2; }
     }
 }
 
-/*********************************** COMO ***********************************/
+/*********************************** LOGOS ***********************************/
 @media all{
+    .logos{
+        padding-top: 80px; padding-bottom: 80px; position: relative;
+        .container{ max-width: 680px !important; @media(min-width:1100px){ max-width: 940px !important; } @media(min-width:1400px){ max-width: 1240px !important; } }
+        .lista{
+            .tc;
+            a{
+                .ib; margin: 15px;
+                img{ height: 80px; width: auto; max-width: 100%; }
+                @media(min-width:1100px){
+                    img{ height: 130px; }
+                }
+            }
+        }
+    }
+}
+
+/*********************************** COMO ***********************************/
+@media (max-width:1199px){
     #como{
         padding-top: 80px; padding-bottom: 80px; position: relative;
-        h2{ .alterfont; .uc; .tc; .cpreto; .t48; max-width: 260px; margin: auto; margin-bottom: 40px; }
+        .container{
+            background-image: url("../img/streets.svg"); background-size: 690px auto; background-repeat: no-repeat; background-position: ~"calc(50% + 65px)" 200px;
+            max-width: 360px !important; overflow: hidden;
+            @media(min-width:1200px){
+                background-image: url("../img/streets-big.svg"); background-size: 690px auto; background-repeat: no-repeat; background-position: 50% 200px;
+                max-width: 800px !important;
+            }
+        }
+        h2{ .alterfont; .uc; .tc; .cpreto; .t48; max-width: 260px; margin: auto; margin-bottom: 100px; }
+        .item{
+            .ball{
+                .bcinza; .rd100; position: relative; float: right; width: 240px; height: 240px;
+                h4{ position: absolute; top: 42%; right: 20px; .alterfont; .cbranco; width: 160px; .uc; .t24; .tr; .lh140; }
+            }
+            .symbol{ width: 80px; height: auto; float: right; }
+            p{ height: 200px; .t14; .cpreto; display: flex; align-items: center; }
+            
+            &.comunidades,&.outras{
+                .ball{
+                    float: left;
+                    h4{ right: auto; left: 20px; text-align: left; }
+                }
+                .symbol{ float: left; }
+                p{ .tr; }
+            }
+            
+            &.saude{ p{ height: 220px; } }
+            &.comunidades{ p{ height: 170px; padding-top: 10px; } }
+            &.prevencao{ p{ height: 200px; } }
+            &.outras{ p{ height: 170px; } }
+        }
+    }
+}
+@media(min-width:1200px){
+    #como{
+        padding-top: 80px; padding-bottom: 80px; position: relative;
+        background: url("../img/dot-ball.svg"), url("../img/dot-ball.svg");
+        background-size: 750px, 750px;
+        background-repeat: no-repeat, no-repeat;
+        background-position: ~"calc(50% - 750px)" 75%, ~"calc(50% + 750px)" 25%;
+        .container{
+            background-image: url("../img/streets-big.svg"); background-size: 690px auto; background-repeat: no-repeat; background-position: 50% 200px;
+            max-width: 800px !important;
+        }
+        h2{ .alterfont; .uc; .tc; .cpreto; .t48; max-width: 260px; margin: auto; margin-bottom: 100px; }
+        .item{
+            .ball{
+                .bcinza; .rd100; position: relative; float: right; width: 380px; height: 380px;
+                h4{ position: absolute; top: 36%; right: 20px; .alterfont; .cbranco; width: 260px; .uc; .t42; .tr; .lh140; }
+            }
+            .symbol{ width: 100px; height: auto; float: right; }
+            p{ height: 200px; .t14; .cpreto; display: flex; align-items: center; }
+            
+            &.comunidades,&.outras{
+                .ball{
+                    float: left;
+                    h4{ right: auto; left: 20px; text-align: left; }
+                }
+                .symbol{ float: left; }
+                p{ .tr; }
+            }
+            
+            &.saude{  }
+            &.comunidades{  }
+            &.prevencao{  }
+            &.outras{  }
+        }
     }
 }
 
@@ -261,8 +358,8 @@ ul,ol{ list-style-type: none; }
             padding-top: 40px; padding-bottom: 20px;
             &>div{ justify-content: center; display: flex; }
             a{
-                .bl; .uc; .cvermelho; .t16; .alterfont; position: relative; .w800; .transition; transition-duration: 350; min-width: 120px;
-                svg{.ib; width: 35px; padding: 5px 10px 30px 5px; float: left; g,path,rect,circle{ fill: @vermelho !important; } }
+                .bl; .uc; .cvermelho; .t16; .tc; .alterfont; position: relative; .transition; .mb1; transition-duration: 350; min-width: 120px;
+                svg.cvermelho{.ib; width: auto; height: 30px; .mb05; g,path,rect,circle{ fill: @vermelho !important; } }
                 &.active{ .cpreto; svg{ g,path,rect,circle{ fill: @preto !important; } } }
             }
         }
@@ -270,20 +367,65 @@ ul,ol{ list-style-type: none; }
             .item{
                 padding: 15px;
                 .box{
-                    padding: 25px; padding-top: 50px; min-height: 280px; height: 100%; display: flex; align-items: center; position: relative;
+                    padding: 50px 25px 35px 25px; min-height: 280px; height: 100%; display: flex; align-items: center; position: relative;
                     .bvermelho; background-image: linear-gradient(to bottom left, @vermelho - @escuro, @vermelho);
                     -webkit-box-shadow: 10px 10px 10px -1px rgba(0,0,0,0.31);
                     -moz-box-shadow: 10px 10px 10px -1px rgba(0,0,0,0.31);
                     box-shadow: 10px 10px 10px -1px rgba(0,0,0,0.31);
                     span{
                         position: absolute; top: 5px; left: 5px;
-                        svg.cbranco{ width: 30px; .ib; .p5; g,path,rect,circle{ fill: @branco !important; } }
+                        svg.cbranco{ width: auto; height: 30px; .ib; .p5; g,path,rect,circle{ fill: @branco !important; } }
                     }
                     p{ .cbranco; .lh160; .t14; }
+                    .share{ .ib; position: absolute; right: 5px; bottom: 0; .p10; .cbranco; .t18; .uc; .alterfont; .lh100; img{ .ib; width: 22px; } }
                 }
             }
         }
-        .mais{ .alterfont; .w800; .t16; .cpreto; .uc; .ib; .p5; margin-top: 50px; margin-bottom: 50px; }
+        .mais{ .alterfont; .t16; .cpreto; .uc; .ib; .p5; margin-top: 50px; margin-bottom: 50px; }
+    }
+}
+
+/*********************************** MAPA ***********************************/
+@media all{
+    #mapa{
+        .bgvermelho; padding-top: 20px; padding-bottom: 20px;
+        .container{ padding-top: 80px; padding-bottom: 80px; max-width: 860px !important; @media(min-width:1100px){ max-width: 940px !important; padding-left: 80px; padding-top: 30px; padding-bottom: 30px; } @media(min-width:1200px){ padding-left: 15px; } }
+        .regiao{
+            width: 100%; position: relative;
+            img.brasil{  }
+            .pin{
+                position: absolute; width: 25px; cursor: pointer;
+                &.scale{ transform: scale(1.8); }
+            }
+            .card{  }
+        }
+        .bloco{
+            display: none;
+            position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; bottom: ~"calc(50% - 222px)"; @media(min-width:992px){ left: 30px; bottom: 120px; right: auto; }
+            .bbranco; -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+            width: 320px;
+            .info{
+                padding: 10px;
+                &.topbar{
+                    p{ .m0; .p0; .t16; .cbranco; a{ float: right; .ib; .alterfont; .cbranco; .uc; } }
+                }
+                &.uf{
+                    p{ .m0; .p0; .t16; .tc; .uc; .lh100; &.cidade{ .t14; text-transform: none; } span{ .ib; width: 220px; .mb1; } a{ .ib; img{ height: 25px; width: auto; } &.right img{ transform: rotate(180deg); } } }
+                }
+                &.ator{
+                    height: 80px; display: flex; align-items: center; justify-content: center;
+                    img{ max-height: 100%; max-width: 100%; }
+                    h3{ .tc; .alterfont; .uc; .m0; .p0; }
+                }
+                &.texto{
+                    height: 200px; overflow: hidden;
+                    p{ .t14; .tc; .lh160; .m0; }
+                }
+                &.ctrl{
+                    p{ .t16; .alterfont; .uc; .cbranco; .m0; a{ .ib; img{ height: 30px; width: auto; } &.right{ float: right; img{ transform: rotate(180deg); } } } }
+                }
+            }
+        }
     }
 }
 
@@ -303,6 +445,7 @@ ul,ol{ list-style-type: none; }
                 @media(min-width:680px){ padding-left: 70px; padding-right: 70px; }
                 @media(min-width:1200px){ padding-left: 185px; padding-right: 185px; }
                 .item{
+                    display: none; &:nth-child(1),&:nth-child(2),&:nth-child(3){ display: inherit; }
                     height: 100%; width: ~"calc( 100vw - 30px )"; padding: 0px 10px; overflow: hidden; display: flex; align-items: center;
                     @media(min-width:680px){ width: 540px; padding: 0px 20px; }
                     @media(min-width:1200px){ width: 570px; padding: 0px 20px; }
@@ -344,7 +487,7 @@ ul,ol{ list-style-type: none; }
         p{
             .cbranco; max-width: 360px; margin: auto; .mb3; .t18; .tc;
             a{ text-decoration: underline !important; .transition; &:hover{ .cpreto; } }
-            span{ .bl; .uc; .alterfont; .w800; .t22; }
+            span{ .bl; .uc; .alterfont; .t22; }
         }
     }
 }

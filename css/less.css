@@ -5,11 +5,19 @@
 .bvermelho {
   background-color: #e3202b;
 }
+.bgvermelho {
+  background-color: #e3202b;
+  background-image: linear-gradient(to bottom, #e3202b 0%, #c10009 100%);
+}
 .cpreto {
   color: #000;
 }
 .bpreto {
   background-color: #000;
+}
+.bgpreto {
+  background-color: #000;
+  background-image: linear-gradient(to bottom, #000 0%, #000000 100%);
 }
 .cescuro {
   color: #222;
@@ -17,11 +25,19 @@
 .bescuro {
   background-color: #222;
 }
+.bgescuro {
+  background-color: #222;
+  background-image: linear-gradient(to bottom, #222 0%, #000000 100%);
+}
 .cgrafite {
   color: #333;
 }
 .bgrafite {
   background-color: #333;
+}
+.bggrafite {
+  background-color: #333;
+  background-image: linear-gradient(to bottom, #333 0%, #111111 100%);
 }
 .ccinzaescuro {
   color: #777;
@@ -29,11 +45,19 @@
 .bcinzaescuro {
   background-color: #777;
 }
+.bgcinzaescuro {
+  background-color: #777;
+  background-image: linear-gradient(to bottom, #777 0%, #555555 100%);
+}
 .ccinza {
   color: #AAA;
 }
 .bcinza {
   background-color: #AAA;
+}
+.bgcinza {
+  background-color: #AAA;
+  background-image: linear-gradient(to bottom, #AAA 0%, #888888 100%);
 }
 .ccinzaclaro {
   color: #EEE;
@@ -41,17 +65,29 @@
 .bcinzaclaro {
   background-color: #EEE;
 }
+.bgcinzaclaro {
+  background-color: #EEE;
+  background-image: linear-gradient(to bottom, #EEE 0%, #cccccc 100%);
+}
 .cgelo {
   color: #F7F7F7;
 }
 .bgelo {
   background-color: #F7F7F7;
 }
+.bggelo {
+  background-color: #F7F7F7;
+  background-image: linear-gradient(to bottom, #F7F7F7 0%, #d5d5d5 100%);
+}
 .cbranco {
   color: #FFF;
 }
 .bbranco {
   background-color: #FFF;
+}
+.bgbranco {
+  background-color: #FFF;
+  background-image: linear-gradient(to bottom, #FFF 0%, #dddddd 100%);
 }
 /********************************* FONTS *********************************/
 @font-face {
@@ -312,6 +348,18 @@ ol {
 .lh200 {
   line-height: 200%;
 }
+/*********************************** ANIMATION ***********************************/
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 /*********************************** GRID ***********************************/
 @media (max-width: 1199px) {
   .container {
@@ -385,9 +433,6 @@ ol {
   nav#menu ul li a.active {
     font-weight: 800;
   }
-  nav#menu.cbranco ul li a::after {
-    background-color: #FFF;
-  }
 }
 @media (min-width: 992px) {
   nav#menu {
@@ -404,8 +449,14 @@ ol {
   nav#menu h1 {
     margin-bottom: 1em;
   }
-  nav#menu h1 img {
+  nav#menu h1 svg {
     width: 128px;
+  }
+  nav#menu h1 svg g,
+  nav#menu h1 svg path,
+  nav#menu h1 svg rect,
+  nav#menu h1 svg circle {
+    fill: #000 !important;
   }
   nav#menu ul {
     margin: 0;
@@ -459,7 +510,16 @@ ol {
     width: 100%;
     height: 6px;
   }
-  nav#menu.cbranco ul li a::after {
+  nav#menu[data-color=branco] h1 svg g,
+  nav#menu[data-color=branco] h1 svg path,
+  nav#menu[data-color=branco] h1 svg rect,
+  nav#menu[data-color=branco] h1 svg circle {
+    fill: #FFF !important;
+  }
+  nav#menu[data-color=branco] ul li a {
+    color: #FFF;
+  }
+  nav#menu[data-color=branco] ul li a::after {
     background-color: #FFF;
   }
 }
@@ -470,6 +530,9 @@ ol {
     padding-top: 80px;
     padding-bottom: 80px;
     position: relative;
+  }
+  #capa .container {
+    max-width: 640px;
   }
   #capa a.open-menu {
     position: fixed;
@@ -505,16 +568,73 @@ ol {
   }
 }
 @media all and (min-width: 992px) {
+  #capa .container {
+    max-width: 940px;
+  }
+}
+@media all and (min-width: 992px) {
   #capa a.open-menu {
     display: none !important;
   }
 }
-/*********************************** COMO ***********************************/
+@media all and (min-width: 1200px) {
+  #capa h1 {
+    font-size: 72px;
+    max-width: 360px;
+  }
+}
+/*********************************** LOGOS ***********************************/
 @media all {
+  .logos {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+  }
+  .logos .container {
+    max-width: 680px !important;
+  }
+  .logos .lista {
+    text-align: center;
+  }
+  .logos .lista a {
+    display: inline-block;
+    margin: 15px;
+  }
+  .logos .lista a img {
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+  }
+}
+@media all and (min-width: 1100px) {
+  .logos .container {
+    max-width: 940px !important;
+  }
+}
+@media all and (min-width: 1400px) {
+  .logos .container {
+    max-width: 1240px !important;
+  }
+}
+@media all and (min-width: 1100px) {
+  .logos .lista a img {
+    height: 130px;
+  }
+}
+/*********************************** COMO ***********************************/
+@media (max-width: 1199px) {
   #como {
     padding-top: 80px;
     padding-bottom: 80px;
     position: relative;
+  }
+  #como .container {
+    background-image: url("../img/streets.svg");
+    background-size: 690px auto;
+    background-repeat: no-repeat;
+    background-position: calc(50% + 65px) 200px;
+    max-width: 360px !important;
+    overflow: hidden;
   }
   #como h2 {
     font-family: 'Aurora', 'Anton', sans-serif;
@@ -524,7 +644,157 @@ ol {
     font-size: 48px;
     max-width: 260px;
     margin: auto;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
+  }
+  #como .item .ball {
+    background-color: #AAA;
+    border-radius: 100vh;
+    position: relative;
+    float: right;
+    width: 240px;
+    height: 240px;
+  }
+  #como .item .ball h4 {
+    position: absolute;
+    top: 42%;
+    right: 20px;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    color: #FFF;
+    width: 160px;
+    text-transform: uppercase;
+    font-size: 24px;
+    text-align: right;
+    line-height: 140%;
+  }
+  #como .item .symbol {
+    width: 80px;
+    height: auto;
+    float: right;
+  }
+  #como .item p {
+    height: 200px;
+    font-size: 14px;
+    color: #000;
+    display: flex;
+    align-items: center;
+  }
+  #como .item.comunidades .ball,
+  #como .item.outras .ball {
+    float: left;
+  }
+  #como .item.comunidades .ball h4,
+  #como .item.outras .ball h4 {
+    right: auto;
+    left: 20px;
+    text-align: left;
+  }
+  #como .item.comunidades .symbol,
+  #como .item.outras .symbol {
+    float: left;
+  }
+  #como .item.comunidades p,
+  #como .item.outras p {
+    text-align: right;
+  }
+  #como .item.saude p {
+    height: 220px;
+  }
+  #como .item.comunidades p {
+    height: 170px;
+    padding-top: 10px;
+  }
+  #como .item.prevencao p {
+    height: 200px;
+  }
+  #como .item.outras p {
+    height: 170px;
+  }
+}
+@media (max-width: 1199px) and (min-width: 1200px) {
+  #como .container {
+    background-image: url("../img/streets-big.svg");
+    background-size: 690px auto;
+    background-repeat: no-repeat;
+    background-position: 50% 200px;
+    max-width: 800px !important;
+  }
+}
+@media (min-width: 1200px) {
+  #como {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+    background: url("../img/dot-ball.svg"), url("../img/dot-ball.svg");
+    background-size: 750px, 750px;
+    background-repeat: no-repeat, no-repeat;
+    background-position: calc(50% - 750px) 75%, calc(50% + 750px) 25%;
+  }
+  #como .container {
+    background-image: url("../img/streets-big.svg");
+    background-size: 690px auto;
+    background-repeat: no-repeat;
+    background-position: 50% 200px;
+    max-width: 800px !important;
+  }
+  #como h2 {
+    font-family: 'Aurora', 'Anton', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: #000;
+    font-size: 48px;
+    max-width: 260px;
+    margin: auto;
+    margin-bottom: 100px;
+  }
+  #como .item .ball {
+    background-color: #AAA;
+    border-radius: 100vh;
+    position: relative;
+    float: right;
+    width: 380px;
+    height: 380px;
+  }
+  #como .item .ball h4 {
+    position: absolute;
+    top: 36%;
+    right: 20px;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    color: #FFF;
+    width: 260px;
+    text-transform: uppercase;
+    font-size: 42px;
+    text-align: right;
+    line-height: 140%;
+  }
+  #como .item .symbol {
+    width: 100px;
+    height: auto;
+    float: right;
+  }
+  #como .item p {
+    height: 200px;
+    font-size: 14px;
+    color: #000;
+    display: flex;
+    align-items: center;
+  }
+  #como .item.comunidades .ball,
+  #como .item.outras .ball {
+    float: left;
+  }
+  #como .item.comunidades .ball h4,
+  #como .item.outras .ball h4 {
+    right: auto;
+    left: 20px;
+    text-align: left;
+  }
+  #como .item.comunidades .symbol,
+  #como .item.outras .symbol {
+    float: left;
+  }
+  #como .item.comunidades p,
+  #como .item.outras p {
+    text-align: right;
   }
 }
 /*********************************** OQUE ***********************************/
@@ -568,26 +838,27 @@ ol {
     text-transform: uppercase;
     color: #e3202b;
     font-size: 16px;
+    text-align: center;
     font-family: 'Aurora', 'Anton', sans-serif;
     position: relative;
-    font-weight: 800;
     -webkit-transition: all 200ms ease-in-out;
     -moz-transition: all 200ms ease-in-out;
     -o-transition: all 200ms ease-in-out;
     transition: all 200ms ease-in-out;
+    margin-bottom: 1em;
     transition-duration: 350;
     min-width: 120px;
   }
-  #oque .filtros a svg {
+  #oque .filtros a svg.cvermelho {
     display: inline-block;
-    width: 35px;
-    padding: 5px 10px 30px 5px;
-    float: left;
+    width: auto;
+    height: 30px;
+    margin-bottom: 0.5em;
   }
-  #oque .filtros a svg g,
-  #oque .filtros a svg path,
-  #oque .filtros a svg rect,
-  #oque .filtros a svg circle {
+  #oque .filtros a svg.cvermelho g,
+  #oque .filtros a svg.cvermelho path,
+  #oque .filtros a svg.cvermelho rect,
+  #oque .filtros a svg.cvermelho circle {
     fill: #e3202b !important;
   }
   #oque .filtros a.active {
@@ -603,8 +874,7 @@ ol {
     padding: 15px;
   }
   #oque .itens .item .box {
-    padding: 25px;
-    padding-top: 50px;
+    padding: 50px 25px 35px 25px;
     min-height: 280px;
     height: 100%;
     display: flex;
@@ -622,7 +892,8 @@ ol {
     left: 5px;
   }
   #oque .itens .item .box span svg.cbranco {
-    width: 30px;
+    width: auto;
+    height: 30px;
     display: inline-block;
     padding: 5px;
   }
@@ -637,9 +908,24 @@ ol {
     line-height: 160%;
     font-size: 14px;
   }
+  #oque .itens .item .box .share {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    padding: 10px;
+    color: #FFF;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    line-height: 100%;
+  }
+  #oque .itens .item .box .share img {
+    display: inline-block;
+    width: 22px;
+  }
   #oque .mais {
     font-family: 'Aurora', 'Anton', sans-serif;
-    font-weight: 800;
     font-size: 16px;
     color: #000;
     text-transform: uppercase;
@@ -660,6 +946,156 @@ ol {
     left: 0;
     top: 48%;
     margin-bottom: 0px;
+  }
+}
+/*********************************** MAPA ***********************************/
+@media all {
+  #mapa {
+    background-color: #e3202b;
+    background-image: linear-gradient(to bottom, #e3202b 0%, #c10009 100%);
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  #mapa .container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    max-width: 860px !important;
+  }
+  #mapa .regiao {
+    width: 100%;
+    position: relative;
+  }
+  #mapa .regiao .pin {
+    position: absolute;
+    width: 25px;
+    cursor: pointer;
+  }
+  #mapa .regiao .pin.scale {
+    transform: scale(1.8);
+  }
+  #mapa .bloco {
+    display: none;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: calc(50% - 222px);
+    background-color: #FFF;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    width: 320px;
+  }
+  #mapa .bloco .info {
+    padding: 10px;
+  }
+  #mapa .bloco .info.topbar p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: #FFF;
+  }
+  #mapa .bloco .info.topbar p a {
+    float: right;
+    display: inline-block;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    color: #FFF;
+    text-transform: uppercase;
+  }
+  #mapa .bloco .info.uf p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 100%;
+  }
+  #mapa .bloco .info.uf p.cidade {
+    font-size: 14px;
+    text-transform: none;
+  }
+  #mapa .bloco .info.uf p span {
+    display: inline-block;
+    width: 220px;
+    margin-bottom: 1em;
+  }
+  #mapa .bloco .info.uf p a {
+    display: inline-block;
+  }
+  #mapa .bloco .info.uf p a img {
+    height: 25px;
+    width: auto;
+  }
+  #mapa .bloco .info.uf p a.right img {
+    transform: rotate(180deg);
+  }
+  #mapa .bloco .info.ator {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #mapa .bloco .info.ator img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  #mapa .bloco .info.ator h3 {
+    text-align: center;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+  }
+  #mapa .bloco .info.texto {
+    height: 200px;
+    overflow: hidden;
+  }
+  #mapa .bloco .info.texto p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 160%;
+    margin: 0;
+  }
+  #mapa .bloco .info.ctrl p {
+    font-size: 16px;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    text-transform: uppercase;
+    color: #FFF;
+    margin: 0;
+  }
+  #mapa .bloco .info.ctrl p a {
+    display: inline-block;
+  }
+  #mapa .bloco .info.ctrl p a img {
+    height: 30px;
+    width: auto;
+  }
+  #mapa .bloco .info.ctrl p a.right {
+    float: right;
+  }
+  #mapa .bloco .info.ctrl p a.right img {
+    transform: rotate(180deg);
+  }
+}
+@media all and (min-width: 1100px) {
+  #mapa .container {
+    max-width: 940px !important;
+    padding-left: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #mapa .container {
+    padding-left: 15px;
+  }
+}
+@media all and (min-width: 992px) {
+  #mapa .bloco {
+    left: 30px;
+    bottom: 120px;
+    right: auto;
   }
 }
 /*********************************** DEPOIMENTOS ***********************************/
@@ -709,12 +1145,18 @@ ol {
     padding-right: 15px;
   }
   #depos .carousel .flow .item {
+    display: none;
     height: 100%;
     width: calc( 100vw - 30px );
     padding: 0px 10px;
     overflow: hidden;
     display: flex;
     align-items: center;
+  }
+  #depos .carousel .flow .item:nth-child(1),
+  #depos .carousel .flow .item:nth-child(2),
+  #depos .carousel .flow .item:nth-child(3) {
+    display: inherit;
   }
   #depos .carousel .flow .item .quote {
     position: relative;
@@ -897,7 +1339,6 @@ ol {
     display: block;
     text-transform: uppercase;
     font-family: 'Aurora', 'Anton', sans-serif;
-    font-weight: 800;
     font-size: 22px;
   }
 }
