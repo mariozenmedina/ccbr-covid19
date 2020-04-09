@@ -29,7 +29,7 @@ $(document).ready(function(e) {
     });
     
     /******************* FILTROS CARDS ********************/
-    var limite = 3;
+    var limite = 6;
     var filtros = [];
     $(".filtros a").click(function(){
         var cat = $(this).attr('data-cat');
@@ -57,7 +57,7 @@ $(document).ready(function(e) {
             if($(selector).length <= limite){ $("#oque a.mais").hide(); }else{ $("#oque a.mais").show(); }
         }
     }
-    $("#oque a.mais").click(function(){ limite+=3; filtrar(); });
+    $("#oque a.mais").click(function(){ limite+=6; filtrar(); });
     /******************* CAROUSEL ********************/
     var carT = $("#depos .carousel .item").length;
     var carA = 1;
@@ -84,6 +84,7 @@ $(document).ready(function(e) {
         carA = carA <= 1 ? carT : carA-1;
         carM(carA); clearInterval(carI);
     });
+    $("#depos .carousel, #depos .carousel *").click(function(){ clearInterval(carI); });
     /******************* MAPA ********************/
     $("#mapa .regiao").click(function(evt){
         var x = ( evt.pageX - $(this).offset().left ) / $(this).width() * 100;
@@ -101,9 +102,11 @@ $(document).ready(function(e) {
 //        $("#mapa .pin").removeClass('scale');
 //        $("#mapa .pin#pin"+pP).addClass('scale');
         
+        $("#mapa .bloco .topbar p span").html($("#mapa .pin#pin"+pP).attr('data-cat'));
         $("#mapa .bloco p.uf span").html($("#mapa .pin#pin"+pP).attr('data-uf'));
         $("#mapa .bloco p.cidade").html($("#mapa .pin#pin"+pP).attr('data-cidade'));
         $("#mapa .bloco .ator h3").html($("#mapa .pin#pin"+pP).attr('data-nome'));
+        $("#mapa .bloco .texto p").html($("#mapa .pin#pin"+pP).attr('data-texto'));
         $("#mapa .bloco").show();
     });
     $("#mapa .close-card").click(function(){ $("#mapa .bloco").hide(); });

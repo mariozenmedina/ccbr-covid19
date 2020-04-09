@@ -69,15 +69,7 @@ function svg($item, $class){
                 </svg>';
             break;
         case 'saude':
-            echo '<svg class="'.$class.'" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15.3 24" xml:space="preserve">
-                <g>
-                    <path class="st0" d="M7.7,12.9c3,0,5.5-2.3,5.6-5.3h0v0c0,0,0,0,0-0.1c0,0,0,0,0,0V4.8c0,0,0,0,0,0V2c0-1.8-3.9-2-5.6-2
-                        C6,0,2.1,0.2,2.1,2v2.8l0,0v2.5C2.1,10.4,4.6,12.9,7.7,12.9z M3.4,5.5h8.5v2c0,0,0,0.1,0,0.1c0,2.3-1.9,4.1-4.2,4.1
-                        S3.4,9.7,3.4,7.3V5.5z"/>
-                    <path class="st0" d="M11.5,15H3.8C1.7,15,0,16.7,0,18.8v4.5C0,23.7,0.3,24,0.7,24h14c0.4,0,0.7-0.3,0.7-0.7v-4.5
-                        C15.3,16.7,13.6,15,11.5,15z"/>
-                </g>
-                </svg>';
+            echo '<svg class="'.$class.'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 21"><path class="cls-1" d="M8,11.3a4.75,4.75,0,0,0,4.86-4.63h0V1.77C12.87.17,9.46,0,8,0S3.13.17,3.13,1.77V4.2h0V6.43A4.88,4.88,0,0,0,8,11.3ZM4.59,4.78h6.83V6.37s0,0,0,.07A3.3,3.3,0,0,1,8,9.7,3.41,3.41,0,0,1,4.59,6.29Z"/><path class="cls-1" d="M12.55,13.14H3.45A3.39,3.39,0,0,0,0,16.46v4A.59.59,0,0,0,.61,21H15.39a.59.59,0,0,0,.61-.58v-4A3.39,3.39,0,0,0,12.55,13.14Z"/></svg>';
             break;
         case 'prevencao':
             echo '<svg class="'.$class.'" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16.6 21" xml:space="preserve">

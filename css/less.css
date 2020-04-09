@@ -360,7 +360,47 @@ ol {
     background-position: 0% 50%;
   }
 }
+@-webkit-keyframes rotating {
+  /* Safari and Chrome */
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 120s linear infinite;
+  -moz-animation: rotating 120s linear infinite;
+  -ms-animation: rotating 120s linear infinite;
+  -o-animation: rotating 120s linear infinite;
+  animation: rotating 120s linear infinite;
+}
 /*********************************** GRID ***********************************/
+html,
+body {
+  overflow-x: hidden !important;
+}
 @media (max-width: 1199px) {
   .container {
     max-width: 420px !important;
@@ -627,14 +667,18 @@ ol {
     padding-top: 80px;
     padding-bottom: 80px;
     position: relative;
-  }
-  #como .container {
     background-image: url("../img/streets.svg");
     background-size: 690px auto;
     background-repeat: no-repeat;
-    background-position: calc(50% + 65px) 200px;
+    background-position: 50% 220px;
+    overflow-x: hidden;
+  }
+  #como .dotball1,
+  #como .dotball2 {
+    display: none !important;
+  }
+  #como .container {
     max-width: 360px !important;
-    overflow: hidden;
   }
   #como h2 {
     font-family: 'Aurora', 'Anton', sans-serif;
@@ -651,8 +695,9 @@ ol {
     border-radius: 100vh;
     position: relative;
     float: right;
-    width: 240px;
-    height: 240px;
+    width: 270px;
+    height: 270px;
+    background-size: cover;
   }
   #como .item .ball h4 {
     position: absolute;
@@ -660,7 +705,6 @@ ol {
     right: 20px;
     font-family: 'Aurora', 'Anton', sans-serif;
     color: #FFF;
-    width: 160px;
     text-transform: uppercase;
     font-size: 24px;
     text-align: right;
@@ -697,17 +741,22 @@ ol {
     text-align: right;
   }
   #como .item.saude p {
-    height: 220px;
+    height: 290px;
+    padding-top: 10px;
+    padding-bottom: 0px;
   }
   #como .item.comunidades p {
-    height: 170px;
-    padding-top: 10px;
+    height: 260px;
+    padding-top: 0px;
+    padding-bottom: 40px;
   }
   #como .item.prevencao p {
-    height: 200px;
+    height: 260px;
+    padding-top: 0px;
+    padding-bottom: 60px;
   }
   #como .item.outras p {
-    height: 170px;
+    height: 250px;
   }
 }
 @media (max-width: 1199px) and (min-width: 1200px) {
@@ -724,10 +773,32 @@ ol {
     padding-top: 80px;
     padding-bottom: 80px;
     position: relative;
-    background: url("../img/dot-ball.svg"), url("../img/dot-ball.svg");
-    background-size: 750px, 750px;
-    background-repeat: no-repeat, no-repeat;
-    background-position: calc(50% - 750px) 75%, calc(50% + 750px) 25%;
+    /*background: url("../img/dot-ball.svg"), url("../img/dot-ball.svg");
+        background-size: 750px, 750px;
+        background-repeat: no-repeat, no-repeat;
+        background-position: ~"calc(50% - 750px)" 75%, ~"calc(50% + 750px)" 25%;*/
+  }
+  #como .dotball1,
+  #como .dotball2 {
+    -webkit-animation: rotating 120s linear infinite;
+    -moz-animation: rotating 120s linear infinite;
+    -ms-animation: rotating 120s linear infinite;
+    -o-animation: rotating 120s linear infinite;
+    animation: rotating 120s linear infinite;
+  }
+  #como .dotball1 {
+    position: absolute;
+    width: 750px;
+    height: 750px;
+    right: calc(50% + 350px);
+    top: 50%;
+  }
+  #como .dotball2 {
+    position: absolute;
+    width: 750px;
+    height: 750px;
+    left: calc(50% + 400px);
+    top: 23%;
   }
   #como .container {
     background-image: url("../img/streets-big.svg");
@@ -753,6 +824,12 @@ ol {
     float: right;
     width: 380px;
     height: 380px;
+    background-size: cover;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    transition-duration: .2s;
   }
   #como .item .ball h4 {
     position: absolute;
@@ -760,7 +837,6 @@ ol {
     right: 20px;
     font-family: 'Aurora', 'Anton', sans-serif;
     color: #FFF;
-    width: 260px;
     text-transform: uppercase;
     font-size: 42px;
     text-align: right;
@@ -795,6 +871,18 @@ ol {
   #como .item.comunidades p,
   #como .item.outras p {
     text-align: right;
+  }
+  #como .item.saude {
+    padding-top: 100px;
+  }
+  #como .item.comunidades {
+    margin-top: -30px;
+  }
+  #como .item.prevencao {
+    margin-top: -50px;
+  }
+  #como .item.outras {
+    margin-top: -20px;
   }
 }
 /*********************************** OQUE ***********************************/
@@ -874,17 +962,27 @@ ol {
     padding: 15px;
   }
   #oque .itens .item .box {
-    padding: 50px 25px 35px 25px;
+    padding: 50px 25px 25px 25px;
     min-height: 280px;
     height: 100%;
     display: flex;
     align-items: center;
     position: relative;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
     background-color: #e3202b;
     background-image: linear-gradient(to bottom left, #c10009, #e3202b);
     -webkit-box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.31);
     -moz-box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.31);
     box-shadow: 10px 10px 10px -1px rgba(0, 0, 0, 0.31);
+  }
+  #oque .itens .item .box:hover {
+    transform: translateY(-5px);
+    -webkit-box-shadow: 10px 10px 25px -1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 10px 10px 25px -1px rgba(0, 0, 0, 0.25);
+    box-shadow: 10px 10px 25px -1px rgba(0, 0, 0, 0.25);
   }
   #oque .itens .item .box span {
     position: absolute;
@@ -907,8 +1005,10 @@ ol {
     color: #FFF;
     line-height: 160%;
     font-size: 14px;
+    margin: 0;
   }
   #oque .itens .item .box .share {
+    display: none !important;
     display: inline-block;
     position: absolute;
     right: 5px;
@@ -948,32 +1048,50 @@ ol {
     margin-bottom: 0px;
   }
 }
+@media all and (max-width: 1199px) {
+  #oque .itens .item:nth-child(n+7) {
+    display: none;
+  }
+}
+@media all and (min-width: 1200px) {
+  #oque .itens .item {
+    display: block !important;
+  }
+}
+@media all and (min-width: 1200px) {
+  #oque .mais {
+    display: none !important;
+  }
+}
 /*********************************** MAPA ***********************************/
 @media all {
-  #mapa {
+  #onde {
     background-color: #e3202b;
     background-image: linear-gradient(to bottom, #e3202b 0%, #c10009 100%);
     padding-top: 20px;
     padding-bottom: 20px;
   }
-  #mapa .container {
+  #onde .container {
     padding-top: 80px;
     padding-bottom: 80px;
     max-width: 860px !important;
   }
-  #mapa .regiao {
-    width: 100%;
+  #onde .scroll .regiao {
     position: relative;
+    width: 100%;
   }
-  #mapa .regiao .pin {
+  #onde .scroll .regiao img.brasil {
+    max-width: 100%;
+  }
+  #onde .scroll .regiao .pin {
     position: absolute;
     width: 25px;
     cursor: pointer;
   }
-  #mapa .regiao .pin.scale {
+  #onde .scroll .regiao .pin.scale {
     transform: scale(1.8);
   }
-  #mapa .bloco {
+  #onde .bloco {
     display: none;
     position: absolute;
     margin-left: auto;
@@ -987,23 +1105,23 @@ ol {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     width: 320px;
   }
-  #mapa .bloco .info {
+  #onde .bloco .info {
     padding: 10px;
   }
-  #mapa .bloco .info.topbar p {
+  #onde .bloco .info.topbar p {
     margin: 0;
     padding: 0;
     font-size: 16px;
     color: #FFF;
   }
-  #mapa .bloco .info.topbar p a {
+  #onde .bloco .info.topbar p a {
     float: right;
     display: inline-block;
     font-family: 'Aurora', 'Anton', sans-serif;
     color: #FFF;
     text-transform: uppercase;
   }
-  #mapa .bloco .info.uf p {
+  #onde .bloco .info.uf p {
     margin: 0;
     padding: 0;
     font-size: 16px;
@@ -1011,75 +1129,75 @@ ol {
     text-transform: uppercase;
     line-height: 100%;
   }
-  #mapa .bloco .info.uf p.cidade {
+  #onde .bloco .info.uf p.cidade {
     font-size: 14px;
     text-transform: none;
   }
-  #mapa .bloco .info.uf p span {
+  #onde .bloco .info.uf p span {
     display: inline-block;
     width: 220px;
     margin-bottom: 1em;
   }
-  #mapa .bloco .info.uf p a {
+  #onde .bloco .info.uf p a {
     display: inline-block;
   }
-  #mapa .bloco .info.uf p a img {
+  #onde .bloco .info.uf p a img {
     height: 25px;
     width: auto;
   }
-  #mapa .bloco .info.uf p a.right img {
+  #onde .bloco .info.uf p a.right img {
     transform: rotate(180deg);
   }
-  #mapa .bloco .info.ator {
+  #onde .bloco .info.ator {
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  #mapa .bloco .info.ator img {
+  #onde .bloco .info.ator img {
     max-height: 100%;
     max-width: 100%;
   }
-  #mapa .bloco .info.ator h3 {
+  #onde .bloco .info.ator h3 {
     text-align: center;
     font-family: 'Aurora', 'Anton', sans-serif;
     text-transform: uppercase;
     margin: 0;
     padding: 0;
   }
-  #mapa .bloco .info.texto {
+  #onde .bloco .info.texto {
     height: 200px;
     overflow: hidden;
   }
-  #mapa .bloco .info.texto p {
+  #onde .bloco .info.texto p {
     font-size: 14px;
     text-align: center;
     line-height: 160%;
     margin: 0;
   }
-  #mapa .bloco .info.ctrl p {
+  #onde .bloco .info.ctrl p {
+    margin: 0;
+  }
+  #onde .bloco .info.ctrl p a {
+    display: inline-block;
     font-size: 16px;
     font-family: 'Aurora', 'Anton', sans-serif;
     text-transform: uppercase;
     color: #FFF;
-    margin: 0;
   }
-  #mapa .bloco .info.ctrl p a {
-    display: inline-block;
-  }
-  #mapa .bloco .info.ctrl p a img {
+  #onde .bloco .info.ctrl p a img {
     height: 30px;
     width: auto;
   }
-  #mapa .bloco .info.ctrl p a.right {
+  #onde .bloco .info.ctrl p a.right {
     float: right;
   }
-  #mapa .bloco .info.ctrl p a.right img {
+  #onde .bloco .info.ctrl p a.right img {
     transform: rotate(180deg);
   }
 }
 @media all and (min-width: 1100px) {
-  #mapa .container {
+  #onde .container {
     max-width: 940px !important;
     padding-left: 80px;
     padding-top: 30px;
@@ -1087,12 +1205,12 @@ ol {
   }
 }
 @media all and (min-width: 1200px) {
-  #mapa .container {
+  #onde .container {
     padding-left: 15px;
   }
 }
 @media all and (min-width: 992px) {
-  #mapa .bloco {
+  #onde .bloco {
     left: 30px;
     bottom: 120px;
     right: auto;
@@ -1182,6 +1300,17 @@ ol {
   #depos .carousel .flow .item .quote p.sign {
     font-weight: 800;
     text-align: right;
+  }
+  #depos .carousel .flow .item .iframe {
+    height: 100%;
+    width: 100%;
+  }
+  #depos .carousel .flow .item .iframe iframe {
+    height: 85%;
+    width: 100%;
+  }
+  #depos .carousel .flow .item .iframe p {
+    font-size: 14px;
   }
   #depos .carousel .controls {
     max-width: 680px !important;
@@ -1340,5 +1469,6 @@ ol {
     text-transform: uppercase;
     font-family: 'Aurora', 'Anton', sans-serif;
     font-size: 22px;
+    margin-top: 10px;
   }
 }
