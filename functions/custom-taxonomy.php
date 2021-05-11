@@ -1,7 +1,7 @@
-<?php /*
+<?php
 add_action( 'init', 'create_taxonomy_category' );
 function create_taxonomy_category() {
-	$custom[] = array('slug' => 'setores', 'name' => 'Setor', 'plural' => 'Setores', 'post-type' => array('receitas'));
+	$custom[] = array('slug' => 'uf', 'name' => 'Estado', 'plural' => 'Estados', 'post-type' => array('pins'));
 	foreach($custom as $item){
 		$labels = array(
 			'name' => $item['plural'],
@@ -17,7 +17,7 @@ function create_taxonomy_category() {
 			'search_items' => 'Pesquisar '.$item['plural'],
 		);
 		register_taxonomy( $item['slug'], $item['post-type'], array(
-			'hierarchical' => true,
+			'hierarchical' => false,
 			'labels' => $labels,
 			'show_ui' => true,
 			'show_in_tag_cloud' => false,

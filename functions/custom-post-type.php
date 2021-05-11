@@ -2,7 +2,7 @@
 /*Custom Posts Types*/
 add_action( 'init', 'register_custom_post_types' );
 function register_custom_post_types() {
-	$custom[] = array('slug' => 'capas', 'x' => 'a', 'name' => 'Capa', 'plural' => 'Capas', 'icon' => 'dashicons-images-alt2');
+	$custom[] = array('slug' => 'pins', 'x' => 'o', 'name' => 'Mapa Pin', 'plural' => 'Mapa Pins', 'icon' => 'dashicons-admin-post');
 	foreach($custom as $item){
 		$labels = array(
 			'name' => _x($item['plural'], 'post type general name'),

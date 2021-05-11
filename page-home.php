@@ -1,15 +1,15 @@
-<?php get_header(); $homeID = 7; ?>
-<?php if(!$_POST): ?>
+<?php get_header(); ?>
+<?php if($_POST && $_POST['senha']=='juntos'): ?>
 <nav id="menu" data-color="branco">
     <div>
         <h1><a data-go="capa" class="go"><?php logo(); ?></a></h1>
         <ul class="menu">
             <a class="close-menu"><img width="30" src="<?php bloginfo('template_url'); ?>/img/close.svg"></a>
-            <li><a data-go="capa" class="go active"><?php the_field('capa-titulo', $homeID); ?></a></li>
-            <li><a data-go="como" class="go"><?php the_field('pilares-titulo', $homeID); ?></a></li>
-            <li><a data-go="oque" class="go"><?php the_field('oque-titulo', $homeID); ?></a></li>
-            <li><a data-go="onde" class="go"><?php the_field('onde-titulo', $homeID); ?></a></li>
-            <li><a data-go="depos" class="go"><?php the_field('depo-titulo', $homeID); ?></a></li>
+            <li><a data-go="capa" class="go active"><?php the_field('capa-titulo'); ?></a></li>
+            <li><a data-go="como" class="go"><?php the_field('pilares-titulo'); ?></a></li>
+            <li><a data-go="oque" class="go"><?php the_field('oque-titulo'); ?></a></li>
+            <li><a data-go="onde" class="go"><?php the_field('onde-titulo'); ?></a></li>
+            <li><a data-go="depos" class="go"><?php the_field('depo-titulo'); ?></a></li>
         </ul>
     </div>
 </nav>
@@ -17,16 +17,15 @@
     <div class="row anchor capa" id="capa" data-color="branco">
         <div class="container">
             <a class="open-menu"><img width="40" src="<?php bloginfo('template_url'); ?>/img/bars.svg"></a>
-            <h1><?php the_field('capa-titulo', $homeID); ?></h1>
-            <div class="subtitulo"><?php the_field('capa-subtitulo', $homeID); ?></div>
-            <?php the_field('capa-texto', $homeID); ?>
+            <h1><?php the_field('capa-titulo'); ?></h1>
+            <?php the_field('capa-texto'); ?>
         </div>
     </div>
     <div class="row anchor logos" id="logos" data-color="preto">
         <div class="container">
             <div class="row">
                 <div class="col lista">
-                    <?php $logos = get_field('logos-lista', $homeID); foreach($logos as $l): ?>
+                    <?php $logos = get_field('logos-lista'); foreach($logos as $l): ?>
                     <a><img src="<?php echo $l; ?>"></a>
                     <?php endforeach; ?>
                 </div>
@@ -39,11 +38,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2><?php the_field('pilares-titulo', $homeID); ?></h2>
+                    <h2><?php the_field('pilares-titulo'); ?></h2>
                 </div>
             </div>
-            <?php $pilares = get_field('pilares-lista', $homeID); ?>
-            <div class="row item item-1 align-items-center">
+            <?php $pilares = get_field('pilares-lista'); ?>
+            <div class="row item saude align-items-center">
                 <div class="col-8 col-xl-5 order-xl-1">
                     <div class="ball" style="background-image: url('<?php echo $pilares[0]['imagem']; ?>')">
                         <h4><?php echo $pilares[0]['titulo']; ?></h4>
@@ -56,7 +55,7 @@
                     <p><?php echo $pilares[0]['texto']; ?></p>
                 </div>
             </div>
-            <div class="row item left item-2 align-items-center">
+            <div class="row item comunidades align-items-center">
                 <div class="col-4 col-xl-2 order-xl-1">
                     <img class="symbol" src="<?php echo $pilares[1]['icone']; ?>">
                 </div>
@@ -69,7 +68,7 @@
                     <p><?php echo $pilares[1]['texto']; ?></p>
                 </div>
             </div>
-            <div class="row item item-3 align-items-center">
+            <div class="row item prevencao align-items-center">
                 <div class="col-8 col-xl-5 order-xl-1">
                     <div class="ball" style="background-image: url('<?php echo $pilares[2]['imagem']; ?>')">
                         <h4><?php echo $pilares[2]['titulo']; ?></h4>
@@ -82,7 +81,7 @@
                     <p><?php echo $pilares[2]['texto']; ?></p>
                 </div>
             </div>
-            <div class="row item left item-4 align-items-center">
+            <div class="row item outras align-items-center">
                 <div class="col-4 col-xl-2 order-xl-1">
                     <img class="symbol" src="<?php echo $pilares[3]['icone']; ?>">
                 </div>
@@ -95,19 +94,6 @@
                     <p><?php echo $pilares[3]['texto']; ?></p>
                 </div>
             </div>
-            <div class="row item item-5 align-items-center">
-                <div class="col-8 col-xl-5 order-xl-1">
-                    <div class="ball" style="background-image: url('<?php echo $pilares[4]['imagem']; ?>')">
-                        <h4><?php echo $pilares[4]['titulo']; ?></h4>
-                    </div>
-                </div>
-                <div class="col-4 col-xl-2 order-xl-3">
-                    <img class="symbol" src="<?php echo $pilares[4]['icone']; ?>">
-                </div>
-                <div class="col-12 col-xl-5 order-xl-2">
-                    <p><?php echo $pilares[4]['texto']; ?></p>
-                </div>
-            </div>
         </div>
     </div>
     <div class="row anchor oque" id="oque" data-color="preto">
@@ -115,83 +101,36 @@
             <div class="row">
                 <div class="col-12">
                     <div class="balls-line"></div>
-                    <h2><?php the_field('oque-titulo', $homeID); ?></h2>
+                    <h2><?php the_field('oque-titulo'); ?></h2>
                 </div>
             </div>
             <div class="row filtros">
-                <div class="col p5">
-                    <a data-cat="prevencao" class=""><?php svg('prevencao','cvermelho'); ?><br><?php the_field('filtro-prevencao', $homeID); ?></a>
+                <div class="col-6 col-xl-3 p5">
+                    <a data-cat="saude" class=""><?php svg('saude','cvermelho'); ?><br><?php the_field('filtro-saude'); ?></a>
                 </div>
-                <div class="col p5">
-                    <a data-cat="saude" class=""><?php svg('saude','cvermelho'); ?><br><?php the_field('filtro-saude', $homeID); ?></a>
+                <div class="col-6 col-xl-3 p5">
+                    <a data-cat="comunidades" class=""><?php svg('comunidades','cvermelho'); ?><br><?php the_field('filtro-comunidades'); ?></a>
                 </div>
-                <div class="col p5">
-                    <a data-cat="alimentar" class=""><?php svg('alimentar','cvermelho'); ?><br><?php the_field('filtro-alimentar', $homeID); ?></a>
+                <div class="col-6 col-xl-3 p5">
+                    <a data-cat="prevencao" class=""><?php svg('prevencao','cvermelho'); ?><br><?php the_field('filtro-prevencao'); ?></a>
                 </div>
-                <div class="col p5">
-                    <a data-cat="vacinacao" class=""><?php svg('vacinacao','cvermelho'); ?><br><?php the_field('filtro-vacinacao', $homeID); ?></a>
-                </div>
-                <div class="col p5">
-                    <a data-cat="comerciante" class=""><?php svg('comerciante','cvermelho'); ?><br><?php the_field('filtro-comerciante', $homeID); ?></a>
+                <div class="col-6 col-xl-3 p5">
+                    <a data-cat="outras" class=""><?php svg('outras','cvermelho'); ?><br><?php the_field('filtro-outras'); ?></a>
                 </div>
             </div>
             <div class="row itens">
-                <?php
-                    $pstID;
-                    if(is_singular('post')): if( have_posts() ): while( have_posts() ): the_post();
-                    $slug = get_post_field( 'post_name', get_post() );
-                    $cats = get_field('categorias');
-                    $pstID = get_the_ID();
-                ?>
-                <div class="col-12 col-xl-4 shared item <?php foreach($cats as $c){ echo 'item-'.$c['value'].' '; } ?>" id="<?php echo $slug; ?>">
+                <?php if( have_rows('oque-postits') ): while( have_rows('oque-postits') ): the_row(); $cats = get_sub_field('categorias'); ?>
+                <div class="col-12 col-xl-4 item <?php foreach($cats as $c){ echo 'item-'.$c['value'].' '; } ?>">
                     <div class="box">
                         <span><?php foreach($cats as $c){ svg($c['value'],'cbranco'); } ?></span>
-                        <?php if( get_field('amazonas') ): ?>
-                        <img class="amazonas" src="<?php bloginfo('template_url'); ?>/img/amazonas.svg" alt="Selo Amazonas">
-                        <?php endif; ?>
-                        <p><?php the_field('texto'); ?></p>
-                        <input id="pst-inp-<?php echo $slug; ?>" type="checkbox">
-                        <div class="share">
-                            <span>
-                                <a href="https://api.whatsapp.com/send?text=<?php the_permalink(); ?>" target="_blank"><?php svg('whatsapp','ms'); ?></a>
-                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php the_permalink(); ?>" target="_blank"><?php svg('linkedin','ms'); ?></a>
-                                <a href="https://twitter.com/share?url=<?php the_permalink(); ?>" target="_blank"><?php svg('twitter','ms'); ?></a>
-                                <a href="https://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" target="_blank"><?php svg('facebook','ms'); ?></a>
-                            </span>
-                            <label for="pst-inp-<?php echo $slug; ?>"><?php svg('share','cshare'); ?></label>
-                        </div>
+                        <p><?php the_sub_field('texto'); ?></p>
+                        <a class="share">Compartilhar <img src="<?php bloginfo('template_url'); ?>/img/share.svg"></a>
                     </div>
                 </div>
-                <?php endwhile; endif; endif; wp_reset_postdata(); ?>
-                <?php
-                    $query = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => -1, 'post__not_in' => array( $pstID ) ) );
-                    if( $query->have_posts() ): while( $query->have_posts() ): $query->the_post();
-                    $slug = get_post_field( 'post_name', get_post() );
-                    $cats = get_field('categorias');
-                ?>
-                <div class="col-12 col-xl-4 item <?php foreach($cats as $c){ echo 'item-'.$c['value'].' '; } ?>" id="<?php echo $slug; ?>">
-                    <div class="box">
-                        <span><?php foreach($cats as $c){ svg($c['value'],'cbranco'); } ?></span>
-                        <?php if( get_field('amazonas') ): ?>
-                        <img class="amazonas" src="<?php bloginfo('template_url'); ?>/img/amazonas.svg" alt="Selo Amazonas">
-                        <?php endif; ?>
-                        <p><?php the_field('texto'); ?></p>
-                        <input id="pst-inp-<?php echo $slug; ?>" type="checkbox">
-                        <div class="share">
-                            <span>
-                                <a href="https://api.whatsapp.com/send?text=<?php the_permalink(); ?>" target="_blank"><?php svg('whatsapp','ms'); ?></a>
-                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php the_permalink(); ?>" target="_blank"><?php svg('linkedin','ms'); ?></a>
-                                <a href="https://twitter.com/share?url=<?php the_permalink(); ?>" target="_blank"><?php svg('twitter','ms'); ?></a>
-                                <a href="https://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" target="_blank"><?php svg('facebook','ms'); ?></a>
-                            </span>
-                            <label for="pst-inp-<?php echo $slug; ?>"><?php svg('share','cshare'); ?></label>
-                        </div>
-                    </div>
-                </div>
-                <?php endwhile; endif; wp_reset_postdata(); ?>
+                <?php endwhile; endif; ?>
             </div>
             <div class="row">
-                <div class="col-12 tc"><a class="mais"><?php the_field('oque-vermais', $homeID); ?></a></div>
+                <div class="col-12 tc"><a class="mais"><?php the_field('oque-vermais'); ?></a></div>
             </div>
         </div>
     </div>
@@ -201,18 +140,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h2><?php the_field('onde-titulo', $homeID); ?></h2>
+                            <h2><?php the_field('onde-titulo'); ?></h2>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <p><?php the_field('onde-texto', $homeID); ?></p>
+                            <p><?php the_field('onde-texto'); ?></p>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <h3><?php the_field('onde-subtitulo', $homeID); ?></h3>
+                            <h3><?php the_field('onde-subtitulo'); ?></h3>
                         </div>
                         <div class="col-12">
                             <div class="tabela">
                                 <img class="borda" src="<?php bloginfo('template_url'); ?>/img/dados-table-border.svg">
-                                <?php $tabela = get_field('onde-tabela', $homeID); ?>
+                                <?php $tabela = get_field('onde-tabela'); ?>
                                 <table>
                                     <?php foreach($tabela as $tr): ?>
                                     <tr>
@@ -224,22 +163,20 @@
                                 </table>
                             </div>
                         </div>
-<!--
                         <div class="col-12">
                             <div class="row cadastro align-items-center">
                                 <div class="col-12 col-xl-4">
-                                    <h5><?php the_field('onde-cadastro-titulo', $homeID); ?></h5>
-                                    <p><?php the_field('onde-cadastro-texto', $homeID); ?></p>
+                                    <h5><?php the_field('onde-cadastro-titulo'); ?></h5>
+                                    <p><?php the_field('onde-cadastro-texto'); ?></p>
                                 </div>
                                 <div class="col-12 col-xl-4">
-                                    <a href="<?php the_field('onde-botao-1-url', $homeID); ?>" target="_blank" class="botao"><?php the_field('onde-botao-1-texto', $homeID); ?></a>
+                                    <a href="<?php the_field('onde-botao-1-url'); ?>" target="_blank" class="botao"><?php the_field('onde-botao-1-texto'); ?></a>
                                 </div>
                                 <div class="col-12 col-xl-4">
-                                    <a href="<?php the_field('onde-botao-2-url', $homeID); ?>" target="_blank" class="botao"><?php the_field('onde-botao-2-texto', $homeID); ?></a>
+                                    <a href="<?php the_field('onde-botao-2-url'); ?>" target="_blank" class="botao"><?php the_field('onde-botao-2-texto'); ?></a>
                                 </div>
                             </div>
                         </div>
--->
                     </div>
                 </div>
             </div>
@@ -280,14 +217,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="balls-line"></div>
-                    <h2><?php the_field('depo-titulo', $homeID); ?></h2>
+                    <h2><?php the_field('depo-titulo'); ?></h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 p0">
                     <div class="carousel">
                         <div class="flow">
-                            <?php $depoCnt=0; if( have_rows('depo-lista', $homeID) ): while( have_rows('depo-lista', $homeID) ): the_row(); $depoCnt++; ?>
+                            <?php $depoCnt=0; if( have_rows('depo-lista') ): while( have_rows('depo-lista') ): the_row(); $depoCnt++; ?>
                             <div class="item">
                                 <?php if(get_sub_field('tipo')=='citacao'): ?>
                                 <div class="quote">
@@ -299,16 +236,6 @@
                                 <div class="iframe">
                                     <?php the_sub_field('video'); ?>
                                     <p><?php the_sub_field('legenda'); ?></p>
-                                </div>
-                                <?php endif; ?>
-                                <?php if(get_sub_field('tipo')=='imagem'): ?>
-                                <div class="imagem">
-                                    <img src="<?php the_sub_field('imagem'); ?>">
-                                </div>
-                                <?php endif; ?>
-                                <?php if( get_sub_field('saibamais') ): ?>
-                                <div class="clear tc link">
-                                    <a class="alterfont t14 uc ib bvermelho cbranco saibamais" style="padding: 10px 25px; margin-top: 10px;" target="_blank" href="<?php the_sub_field('saibamais'); ?>">Saiba Mais +</a>
                                 </div>
                                 <?php endif; ?>
                             </div>
@@ -332,11 +259,11 @@
     </div>
     <div class="row duvida anchor" id="duvida" data-color="branco">
         <div class="container">
-            <h2><?php the_field('duvida-titulo', $homeID); ?></h2>
-            <p><?php the_field('duvida-texto', $homeID); ?></p>
+            <h2><?php the_field('duvida-titulo'); ?></h2>
+            <p><?php the_field('duvida-texto'); ?></p>
             <div class="row">
-                <div class="col-12 col-xl-6"><p><a href="<?php the_field('termos-url', $homeID); ?>" target="_blank">Termos e condições</a></p></div>
-                <div class="col-12 col-xl-6"><p><a href="<?php the_field('politica-url', $homeID); ?>" target="_blank">Política de privacidade</a></p></div>
+                <div class="col-12 col-xl-6"><p><a href="<?php the_field('termos-url'); ?>" target="_blank">Termos e condições</a></p></div>
+                <div class="col-12 col-xl-6"><p><a href="<?php the_field('politica-url'); ?>" target="_blank">Política de privacidade</a></p></div>
             </div>
         </div>
     </div>
@@ -352,7 +279,6 @@
         </div>
     </div>
 </div>
-<script></script>
 <?php else: ?>
 <div class="container-fluid" style="min-height: 100vh;">
     <div class="row bvermelho align-items-center" style="min-height: 100vh;">

@@ -172,6 +172,9 @@ ol {
   display: table-cell;
   vertical-align: middle;
 }
+nobr {
+  font-family: inherit;
+}
 /*********************************** FORMAS ***********************************/
 .il {
   display: inline;
@@ -272,6 +275,9 @@ ol {
 }
 .tr {
   text-align: right;
+}
+.t9 {
+  font-size: 9px;
 }
 .t11 {
   font-size: 11px;
@@ -397,6 +403,20 @@ ol {
   animation: rotating 120s linear infinite;
 }
 /*********************************** GRID ***********************************/
+::-webkit-scrollbar {
+  width: 8px;
+  background: #FFF;
+}
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #e3202b;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #e3202b;
+}
 html,
 body {
   overflow-x: hidden !important;
@@ -572,7 +592,7 @@ body {
     position: relative;
   }
   #capa .container {
-    max-width: 640px;
+    max-width: 640px !important;
   }
   #capa a.open-menu {
     position: fixed;
@@ -600,6 +620,13 @@ body {
     margin: auto;
     margin-bottom: 40px;
   }
+  #capa .subtitulo p {
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 800;
+    line-height: 140%;
+  }
   #capa p {
     font-size: 14px;
     color: #FFF;
@@ -609,7 +636,7 @@ body {
 }
 @media all and (min-width: 992px) {
   #capa .container {
-    max-width: 940px;
+    max-width: 740px !important;
   }
 }
 @media all and (min-width: 992px) {
@@ -667,7 +694,7 @@ body {
     padding-top: 80px;
     padding-bottom: 80px;
     position: relative;
-    background-image: url("../img/streets.svg");
+    background-image: url("../img/streets-5.svg");
     background-size: 690px auto;
     background-repeat: no-repeat;
     background-position: 50% 220px;
@@ -699,6 +726,16 @@ body {
     height: 270px;
     background-size: cover;
   }
+  #como .item .ball::before {
+    content: '';
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
   #como .item .ball h4 {
     position: absolute;
     top: 42%;
@@ -722,50 +759,44 @@ body {
     display: flex;
     align-items: center;
   }
-  #como .item.comunidades .ball,
-  #como .item.outras .ball {
+  #como .item.left .ball {
     float: left;
   }
-  #como .item.comunidades .ball h4,
-  #como .item.outras .ball h4 {
+  #como .item.left .ball h4 {
     right: auto;
     left: 20px;
     text-align: left;
   }
-  #como .item.comunidades .symbol,
-  #como .item.outras .symbol {
+  #como .item.left .symbol {
     float: left;
   }
-  #como .item.comunidades p,
-  #como .item.outras p {
+  #como .item.left p {
     text-align: right;
   }
-  #como .item.saude p {
+  #como .item.item-1 p {
+    height: 320px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+  }
+  #como .item.item-2 p {
     height: 290px;
     padding-top: 10px;
     padding-bottom: 0px;
   }
-  #como .item.comunidades p {
-    height: 260px;
-    padding-top: 0px;
-    padding-bottom: 40px;
+  #como .item.item-3 p {
+    height: 290px;
+    padding-top: 10px;
+    padding-bottom: 0px;
   }
-  #como .item.prevencao p {
-    height: 260px;
-    padding-top: 0px;
-    padding-bottom: 60px;
+  #como .item.item-4 p {
+    height: 310px;
+    padding-top: 30px;
+    padding-bottom: 0px;
   }
-  #como .item.outras p {
-    height: 250px;
-  }
-}
-@media (max-width: 1199px) and (min-width: 1200px) {
-  #como .container {
-    background-image: url("../img/streets-big.svg");
-    background-size: 690px auto;
-    background-repeat: no-repeat;
-    background-position: 50% 200px;
-    max-width: 800px !important;
+  #como .item.item-5 p {
+    height: 290px;
+    padding-top: 10px;
+    padding-bottom: 0px;
   }
 }
 @media (min-width: 1200px) {
@@ -801,7 +832,7 @@ body {
     top: 23%;
   }
   #como .container {
-    background-image: url("../img/streets-big.svg");
+    background-image: url("../img/streets-big-5.svg");
     background-size: 690px auto;
     background-repeat: no-repeat;
     background-position: 50% 200px;
@@ -831,9 +862,19 @@ body {
     transition: all 200ms ease-in-out;
     transition-duration: .2s;
   }
+  #como .item .ball::before {
+    content: '';
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
   #como .item .ball h4 {
     position: absolute;
-    top: 36%;
+    top: 50%;
     right: 20px;
     font-family: 'Aurora', 'Anton', sans-serif;
     color: #FFF;
@@ -841,6 +882,8 @@ body {
     font-size: 42px;
     text-align: right;
     line-height: 140%;
+    margin: 0;
+    transform: translateY(-50%);
   }
   #como .item .symbol {
     width: 100px;
@@ -854,35 +897,22 @@ body {
     display: flex;
     align-items: center;
   }
-  #como .item.comunidades .ball,
-  #como .item.outras .ball {
+  #como .item.left .ball {
     float: left;
   }
-  #como .item.comunidades .ball h4,
-  #como .item.outras .ball h4 {
+  #como .item.left .ball h4 {
     right: auto;
     left: 20px;
     text-align: left;
   }
-  #como .item.comunidades .symbol,
-  #como .item.outras .symbol {
+  #como .item.left .symbol {
     float: left;
   }
-  #como .item.comunidades p,
-  #como .item.outras p {
+  #como .item.left p {
     text-align: right;
   }
-  #como .item.saude {
-    padding-top: 100px;
-  }
-  #como .item.comunidades {
-    margin-top: -30px;
-  }
-  #como .item.prevencao {
-    margin-top: -50px;
-  }
-  #como .item.outras {
-    margin-top: -20px;
+  #como .item.item-1 {
+    padding-top: 80px;
   }
 }
 /*********************************** OQUE ***********************************/
@@ -949,6 +979,12 @@ body {
   #oque .filtros a svg.cvermelho circle {
     fill: #e3202b !important;
   }
+  #oque .filtros a svg.cvermelho g.cl-none,
+  #oque .filtros a svg.cvermelho path.cl-none,
+  #oque .filtros a svg.cvermelho rect.cl-none,
+  #oque .filtros a svg.cvermelho circle.cl-none {
+    fill: none !important;
+  }
   #oque .filtros a.active {
     color: #000;
   }
@@ -957,6 +993,15 @@ body {
   #oque .filtros a.active svg rect,
   #oque .filtros a.active svg circle {
     fill: #000 !important;
+  }
+  #oque .filtros a.active svg g.cl-none,
+  #oque .filtros a.active svg path.cl-none,
+  #oque .filtros a.active svg rect.cl-none,
+  #oque .filtros a.active svg circle.cl-none {
+    fill: none !important;
+  }
+  #oque .filtros a:hover {
+    transform: scale(1.2);
   }
   #oque .itens .item {
     padding: 15px;
@@ -984,45 +1029,153 @@ body {
     -moz-box-shadow: 10px 10px 25px -1px rgba(0, 0, 0, 0.25);
     box-shadow: 10px 10px 25px -1px rgba(0, 0, 0, 0.25);
   }
-  #oque .itens .item .box span {
+  #oque .itens .item .box > span {
     position: absolute;
     top: 5px;
     left: 5px;
   }
-  #oque .itens .item .box span svg.cbranco {
+  #oque .itens .item .box > span svg.cbranco {
     width: auto;
-    height: 30px;
+    height: 35px;
     display: inline-block;
     padding: 5px;
   }
-  #oque .itens .item .box span svg.cbranco g,
-  #oque .itens .item .box span svg.cbranco path,
-  #oque .itens .item .box span svg.cbranco rect,
-  #oque .itens .item .box span svg.cbranco circle {
+  #oque .itens .item .box > span svg.cbranco g,
+  #oque .itens .item .box > span svg.cbranco path,
+  #oque .itens .item .box > span svg.cbranco rect,
+  #oque .itens .item .box > span svg.cbranco circle {
     fill: #FFF !important;
+  }
+  #oque .itens .item .box > span svg.cbranco g.cl-none,
+  #oque .itens .item .box > span svg.cbranco path.cl-none,
+  #oque .itens .item .box > span svg.cbranco rect.cl-none,
+  #oque .itens .item .box > span svg.cbranco circle.cl-none {
+    fill: none !important;
+  }
+  #oque .itens .item .box .amazonas {
+    position: absolute;
+    width: 90px;
+    top: -4px;
+    right: 43px;
   }
   #oque .itens .item .box p {
     color: #FFF;
     line-height: 160%;
-    font-size: 14px;
+    font-size: 13px;
     margin: 0;
   }
   #oque .itens .item .box .share {
-    display: none !important;
-    display: inline-block;
     position: absolute;
+    top: 5px;
     right: 5px;
-    bottom: 0;
-    padding: 10px;
-    color: #FFF;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-family: 'Aurora', 'Anton', sans-serif;
-    line-height: 100%;
+    z-index: 55;
+    max-width: calc(100% - 10px);
+    width: 30px;
+    height: 35px;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    overflow: hidden;
   }
-  #oque .itens .item .box .share img {
+  #oque .itens .item .box .share label {
+    cursor: pointer;
+    margin: 0;
+    float: right;
+  }
+  #oque .itens .item .box .share svg.cshare {
+    width: auto;
+    height: 35px;
     display: inline-block;
-    width: 22px;
+    padding: 5px;
+  }
+  #oque .itens .item .box .share svg.cshare g,
+  #oque .itens .item .box .share svg.cshare path,
+  #oque .itens .item .box .share svg.cshare rect,
+  #oque .itens .item .box .share svg.cshare circle {
+    fill: #FFF !important;
+  }
+  #oque .itens .item .box .share svg.cshare g.cl-none,
+  #oque .itens .item .box .share svg.cshare path.cl-none,
+  #oque .itens .item .box .share svg.cshare rect.cl-none,
+  #oque .itens .item .box .share svg.cshare circle.cl-none {
+    fill: none !important;
+  }
+  #oque .itens .item .box .share > span {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    visibility: hidden;
+    opacity: 0;
+  }
+  #oque .itens .item .box .share > span a svg {
+    width: auto;
+    height: 35px;
+    display: inline-block;
+    padding: 5px;
+  }
+  #oque .itens .item .box .share > span a svg g,
+  #oque .itens .item .box .share > span a svg path,
+  #oque .itens .item .box .share > span a svg rect,
+  #oque .itens .item .box .share > span a svg circle {
+    fill: #FFF !important;
+  }
+  #oque .itens .item .box .share > span a svg g.cls-1,
+  #oque .itens .item .box .share > span a svg path.cls-1,
+  #oque .itens .item .box .share > span a svg rect.cls-1,
+  #oque .itens .item .box .share > span a svg circle.cls-1 {
+    fill: #e3202b !important;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+  }
+  #oque .itens .item .box .share > span a:hover svg {
+    width: auto;
+    height: 35px;
+    display: inline-block;
+    padding: 5px;
+  }
+  #oque .itens .item .box .share > span a:hover svg g,
+  #oque .itens .item .box .share > span a:hover svg path,
+  #oque .itens .item .box .share > span a:hover svg rect,
+  #oque .itens .item .box .share > span a:hover svg circle {
+    fill: #FFF !important;
+  }
+  #oque .itens .item .box .share > span a:hover svg g.cls-1,
+  #oque .itens .item .box .share > span a:hover svg path.cls-1,
+  #oque .itens .item .box .share > span a:hover svg rect.cls-1,
+  #oque .itens .item .box .share > span a:hover svg circle.cls-1 {
+    fill: #000 !important;
+  }
+  #oque .itens .item .box input {
+    display: none !important;
+  }
+  #oque .itens .item .box input:checked ~ .share {
+    width: 390px;
+    background-color: #FFF;
+  }
+  #oque .itens .item .box input:checked ~ .share svg.cshare {
+    width: auto;
+    height: 35px;
+    display: inline-block;
+    padding: 5px;
+  }
+  #oque .itens .item .box input:checked ~ .share svg.cshare g,
+  #oque .itens .item .box input:checked ~ .share svg.cshare path,
+  #oque .itens .item .box input:checked ~ .share svg.cshare rect,
+  #oque .itens .item .box input:checked ~ .share svg.cshare circle {
+    fill: #e3202b !important;
+  }
+  #oque .itens .item .box input:checked ~ .share svg.cshare g.cl-none,
+  #oque .itens .item .box input:checked ~ .share svg.cshare path.cl-none,
+  #oque .itens .item .box input:checked ~ .share svg.cshare rect.cl-none,
+  #oque .itens .item .box input:checked ~ .share svg.cshare circle.cl-none {
+    fill: none !important;
+  }
+  #oque .itens .item .box input:checked ~ .share > span {
+    visibility: visible;
+    opacity: 1;
   }
   #oque .mais {
     font-family: 'Aurora', 'Anton', sans-serif;
@@ -1054,45 +1207,201 @@ body {
   }
 }
 @media all and (min-width: 1200px) {
-  #oque .itens .item {
-    display: block !important;
+  #oque .itens .item:nth-child(n+19) {
+    display: none;
   }
 }
-@media all and (min-width: 1200px) {
-  #oque .mais {
-    display: none !important;
-  }
-}
-/*********************************** MAPA ***********************************/
+/*********************************** ONDE | DADOS - MAPA ***********************************/
 @media all {
   #onde {
     background-color: #e3202b;
     background-image: linear-gradient(to bottom, #e3202b 0%, #c10009 100%);
-    padding-top: 20px;
     padding-bottom: 20px;
   }
   #onde .container {
     padding-top: 80px;
     padding-bottom: 80px;
-    max-width: 860px !important;
+    max-width: 760px !important;
   }
-  #onde .scroll .regiao {
+  #onde #dados {
+    background-image: url("../img/back-dados.jpg");
+    background-size: cover;
+    background-position: center center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+  #onde #dados h2 {
+    font-family: 'Aurora', 'Anton', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FFF;
+    font-size: 48px;
+    max-width: 260px;
+    margin: auto;
+    margin-bottom: 1em;
     position: relative;
+    z-index: 2;
+  }
+  #onde #dados p {
+    color: #FFF;
+    font-size: 14px;
+    margin-bottom: 3em;
+    line-height: 160%;
+  }
+  #onde #dados h3 {
+    color: #FFF;
+    font-size: 22px;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    line-height: 160%;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+  }
+  #onde #dados .tabela {
+    padding: 20px 0;
+    position: relative;
+    max-width: 420px;
+    margin: auto;
+    border: solid 4px #FFF;
+    border-radius: 3px;
+    border-top: none;
+  }
+  #onde #dados .tabela .borda {
+    position: absolute;
+    right: -4px;
+    bottom: calc(100% - 3px);
+    width: calc(100% + 8px);
+  }
+  #onde #dados .tabela table {
     width: 100%;
   }
-  #onde .scroll .regiao img.brasil {
+  #onde #dados .tabela table tr td {
+    color: #FFF;
+    text-align: center;
+    padding: 10px 10px;
+    vertical-align: top;
+    width: 33.333%;
+  }
+  #onde #dados .tabela table tr td span {
+    font-size: 32px;
+    text-transform: uppercase;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    margin: 0;
+    line-height: 100%;
+  }
+  #onde #dados .tabela table tr td span small {
+    font-size: 18px;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    margin: 0;
+    line-height: 100%;
+  }
+  #onde #dados .tabela table tr td p {
+    font-size: 9px;
+    margin: 0;
+  }
+  #onde #dados .tabela table tr:first-child td {
+    padding: 20px 10px;
+  }
+  #onde #dados .tabela table tr:first-child td span {
+    font-size: 14px;
+  }
+  #onde #dados .cadastro {
+    padding-top: 80px;
+  }
+  #onde #dados .cadastro h5 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Aurora', 'Anton', sans-serif;
+    color: #FFF;
+    font-size: 18px;
+    text-align: center;
+  }
+  #onde #dados .cadastro p {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  #onde #dados .cadastro .botao {
+    display: block;
+    text-align: center;
+    width: 100%;
+    max-width: 240px;
+    margin: auto;
+    padding: 10px;
+    background-color: #FFF;
+    color: #e3202b;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+  }
+  #onde #dados .cadastro .botao:hover {
+    color: #000;
+  }
+  #onde #mapa {
+    padding-top: 50px;
+  }
+  #onde #mapa .scroll .regiao {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+  }
+  #onde #mapa .scroll .regiao img.brasil {
     max-width: 100%;
+    max-height: 95vh;
+    width: 93vh;
   }
-  #onde .scroll .regiao .pin {
+  #onde #mapa .scroll .regiao .pin {
     position: absolute;
-    width: 25px;
+    width: 3.5vw;
+    max-width: 25px;
     cursor: pointer;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    transition-duration: 100ms;
+    transform-origin: bottom center;
   }
-  #onde .scroll .regiao .pin.scale {
-    transform: scale(1.8);
+  #onde #mapa .scroll .regiao .pin[data-cat="Coletivo Jovem"] {
+    z-index: 98;
   }
-  #onde .bloco {
+  #onde #mapa .scroll .regiao .pin[data-cat="Cooperativa"] {
+    z-index: 97;
+  }
+  #onde #mapa .scroll .regiao .pin[data-cat="Fabricante"] {
+    z-index: 99;
+  }
+  #onde #mapa .scroll .regiao .pin:hover {
+    transform: scale(1.2);
+  }
+  #onde #mapa .scroll .regiao .legenda {
+    position: absolute;
+    left: 0%;
+    bottom: 5%;
+    margin: 0;
+    padding: 0;
+  }
+  #onde #mapa .scroll .regiao .legenda li {
+    margin-bottom: 10px;
+  }
+  #onde #mapa .scroll .regiao .legenda li img {
+    width: 20px;
+  }
+  #onde #mapa .scroll .regiao .legenda li span {
+    display: inline-block;
+    font-size: 12px;
+    color: #FFF;
+    margin-left: 5px;
+  }
+  #onde #mapa .bloco {
     display: none;
+    z-index: 998;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -1105,23 +1414,23 @@ body {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     width: 320px;
   }
-  #onde .bloco .info {
+  #onde #mapa .bloco .info {
     padding: 10px;
   }
-  #onde .bloco .info.topbar p {
+  #onde #mapa .bloco .info.topbar p {
     margin: 0;
     padding: 0;
     font-size: 16px;
     color: #FFF;
   }
-  #onde .bloco .info.topbar p a {
+  #onde #mapa .bloco .info.topbar p a {
     float: right;
     display: inline-block;
     font-family: 'Aurora', 'Anton', sans-serif;
     color: #FFF;
     text-transform: uppercase;
   }
-  #onde .bloco .info.uf p {
+  #onde #mapa .bloco .info.uf p {
     margin: 0;
     padding: 0;
     font-size: 16px;
@@ -1129,70 +1438,84 @@ body {
     text-transform: uppercase;
     line-height: 100%;
   }
-  #onde .bloco .info.uf p.cidade {
+  #onde #mapa .bloco .info.uf p.cidade {
     font-size: 14px;
     text-transform: none;
   }
-  #onde .bloco .info.uf p span {
+  #onde #mapa .bloco .info.uf p span {
     display: inline-block;
     width: 220px;
     margin-bottom: 1em;
   }
-  #onde .bloco .info.uf p a {
+  #onde #mapa .bloco .info.uf p a {
     display: inline-block;
   }
-  #onde .bloco .info.uf p a img {
+  #onde #mapa .bloco .info.uf p a img {
     height: 25px;
     width: auto;
   }
-  #onde .bloco .info.uf p a.right img {
+  #onde #mapa .bloco .info.uf p a.right img {
     transform: rotate(180deg);
   }
-  #onde .bloco .info.ator {
+  #onde #mapa .bloco .info.ator {
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  #onde .bloco .info.ator img {
+  #onde #mapa .bloco .info.ator img {
     max-height: 100%;
     max-width: 100%;
   }
-  #onde .bloco .info.ator h3 {
+  #onde #mapa .bloco .info.ator h3 {
     text-align: center;
     font-family: 'Aurora', 'Anton', sans-serif;
     text-transform: uppercase;
     margin: 0;
     padding: 0;
   }
-  #onde .bloco .info.texto {
+  #onde #mapa .bloco .info.texto {
     height: 200px;
     overflow: hidden;
+    position: relative;
   }
-  #onde .bloco .info.texto p {
+  #onde #mapa .bloco .info.texto p {
     font-size: 14px;
     text-align: center;
     line-height: 160%;
     margin: 0;
+    max-height: 100%;
+    overflow: auto;
+    padding: 0 5px 20px;
   }
-  #onde .bloco .info.ctrl p {
+  #onde #mapa .bloco .info.texto p::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    background-image: linear-gradient(to bottom, transparent, #FFF 60%);
+  }
+  #onde #mapa .bloco .info.ctrl p {
     margin: 0;
   }
-  #onde .bloco .info.ctrl p a {
+  #onde #mapa .bloco .info.ctrl p a {
     display: inline-block;
     font-size: 16px;
     font-family: 'Aurora', 'Anton', sans-serif;
     text-transform: uppercase;
     color: #FFF;
   }
-  #onde .bloco .info.ctrl p a img {
+  #onde #mapa .bloco .info.ctrl p a img {
     height: 30px;
     width: auto;
   }
-  #onde .bloco .info.ctrl p a.right {
+  #onde #mapa .bloco .info.ctrl p a.right {
     float: right;
   }
-  #onde .bloco .info.ctrl p a.right img {
+  #onde #mapa .bloco .info.ctrl p a.right img {
     transform: rotate(180deg);
   }
 }
@@ -1209,11 +1532,83 @@ body {
     padding-left: 15px;
   }
 }
+@media all and (min-width: 1200px) {
+  #onde #dados h3 {
+    text-align: right;
+  }
+}
+@media all and (min-width: 1200px) {
+  #onde #dados .tabela {
+    max-width: 600px;
+    border: solid 6px #FFF;
+    border-radius: 3px;
+    border-top: none;
+  }
+}
+@media all and (min-width: 1200px) {
+  #onde #dados .tabela .borda {
+    right: -6px;
+    bottom: calc(100% - 6px);
+    width: calc(100% + 12px);
+  }
+}
+@media all and (min-width: 1200px) {
+  #onde #dados .tabela table tr td span {
+    font-size: 56px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #onde #dados .tabela table tr td span small {
+    font-size: 32px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #onde #dados .tabela table tr td p {
+    font-size: 18px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #onde #dados .tabela table tr:first-child td span {
+    font-size: 24px;
+  }
+}
+@media all and (min-width: 1200px) {
+  #onde #dados .cadastro h5 {
+    text-align: left;
+  }
+}
+@media all and (min-width: 1200px) {
+  #onde #dados .cadastro p {
+    text-align: left;
+  }
+}
+@media all and (min-width: 670px) {
+  #onde #mapa .scroll .regiao .legenda {
+    left: 10%;
+    bottom: 20%;
+  }
+}
 @media all and (min-width: 992px) {
-  #onde .bloco {
+  #onde #mapa .scroll .regiao .legenda {
+    left: 70%;
+    bottom: 5%;
+  }
+}
+@media all and (min-width: 670px) {
+  #onde #mapa .scroll .regiao .legenda li span {
+    font-size: 14px;
+  }
+}
+@media all and (min-width: 992px) {
+  #onde #mapa .bloco {
     left: 30px;
     bottom: 120px;
     right: auto;
+  }
+}
+@media all and (min-width: 1024px) {
+  #onde #mapa .bloco .info.texto {
+    height: 250px;
   }
 }
 /*********************************** DEPOIMENTOS ***********************************/
@@ -1239,7 +1634,7 @@ body {
     z-index: 2;
   }
   #depos .carousel {
-    height: 450px;
+    height: 590px;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -1263,10 +1658,11 @@ body {
     padding-right: 15px;
   }
   #depos .carousel .flow .item {
+    position: relative;
     display: none;
     height: 100%;
     width: calc( 100vw - 30px );
-    padding: 0px 10px;
+    padding: 0px 10px 50px 10px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -1304,6 +1700,7 @@ body {
   #depos .carousel .flow .item .iframe {
     height: 100%;
     width: 100%;
+    position: relative;
   }
   #depos .carousel .flow .item .iframe iframe {
     height: 85%;
@@ -1311,6 +1708,31 @@ body {
   }
   #depos .carousel .flow .item .iframe p {
     font-size: 14px;
+  }
+  #depos .carousel .flow .item .imagem {
+    display: block;
+    margin: auto;
+  }
+  #depos .carousel .flow .item .imagem img {
+    max-height: 85%;
+    width: 100%;
+  }
+  #depos .carousel .flow .item .link {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  #depos .carousel .flow .item .link .saibamais {
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    color: #FFF;
+  }
+  #depos .carousel .flow .item .link .saibamais:hover {
+    background-color: #000;
+    color: #FFF;
   }
   #depos .carousel .controls {
     max-width: 680px !important;
@@ -1369,26 +1791,20 @@ body {
 }
 @media all and (min-width: 680px) {
   #depos .carousel .flow {
-    padding-left: 70px;
+    padding-left: 87px;
     padding-right: 70px;
   }
 }
 @media all and (min-width: 1200px) {
   #depos .carousel .flow {
-    padding-left: 185px;
+    padding-left: 202px;
     padding-right: 185px;
   }
 }
 @media all and (min-width: 680px) {
   #depos .carousel .flow .item {
     width: 540px;
-    padding: 0px 20px;
-  }
-}
-@media all and (min-width: 1200px) {
-  #depos .carousel .flow .item {
-    width: 570px;
-    padding: 0px 20px;
+    padding: 0px 20px 50px 20px;
   }
 }
 @media all and (min-width: 1200px) {
