@@ -5,7 +5,7 @@
         <h1><a data-go="capa" class="go"><?php logo(); ?></a></h1>
         <ul class="menu">
             <a class="close-menu"><img width="30" src="<?php bloginfo('template_url'); ?>/img/close.svg"></a>
-            <li><a data-go="capa" class="go active"><?php the_field('capa-titulo', $homeID); ?></a></li>
+            <li><a data-go="capa" class="go active"><?php //the_field('capa-titulo', $homeID); ?>Apresentação</a></li>
             <li><a data-go="como" class="go"><?php the_field('pilares-titulo', $homeID); ?></a></li>
             <li><a data-go="oque" class="go"><?php the_field('oque-titulo', $homeID); ?></a></li>
             <li><a data-go="onde" class="go"><?php the_field('onde-titulo', $homeID); ?></a></li>
@@ -29,6 +29,24 @@
                     <?php $logos = get_field('logos-lista', $homeID); foreach($logos as $l): ?>
                     <a><img src="<?php echo $l; ?>"></a>
                     <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col banners">
+                    <?php $banners = get_field('banners-lista', $homeID); $cnt=0; foreach($banners as $b): $cnt++; ?>
+                    <input type="radio" name="banners" <?php echo $cnt==1 ? 'checked' : ''; ?> id="ban-inp-<?php echo $cnt; ?>" />
+
+                    <a class="ban-img go" <?php if( substr( $b['url'], 0, 3 ) === 'go-' ){ $bUrl = explode('go-', $b['url']); echo 'data-go="'.$bUrl[1].'"'; } else{ echo 'href="'.$b['url'].'"'; } ?> target="<?php echo $b['target']; ?>">
+                        <img class="mobile" src="<?php echo $b['imagem-mobile']; ?>">
+                        <img class="desktop" src="<?php echo $b['imagem']; ?>">
+                    </a>
+                    
+                    <?php endforeach; ?>
+                    <div class="controle">
+                        <?php $cnt=0; foreach($banners as $b): $cnt++; ?>
+                        <label class="<?php echo $cnt==1 ? 'active' : ''; ?>" for="ban-inp-<?php echo $cnt; ?>"></label>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>

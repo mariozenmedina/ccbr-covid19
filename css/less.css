@@ -650,7 +650,7 @@ body {
     max-width: 360px;
   }
 }
-/*********************************** LOGOS ***********************************/
+/*********************************** LOGOS & BANNERS ***********************************/
 @media all {
   .logos {
     padding-top: 80px;
@@ -672,6 +672,47 @@ body {
     width: auto;
     max-width: 100%;
   }
+  .banners {
+    text-align: center;
+    padding-top: 80px;
+  }
+  .banners a {
+    display: none;
+    text-align: center;
+  }
+  .banners a img {
+    display: inline-block;
+    max-width: 100%;
+  }
+  .banners a img.desktop {
+    display: none;
+  }
+  .banners input {
+    display: none !important;
+  }
+  .banners input:checked + a {
+    display: inline-block;
+  }
+  .banners .controle {
+    text-align: center;
+    padding-top: 20px;
+  }
+  .banners .controle label {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: solid 3px #e3202b;
+    background-color: #FFF;
+    border-radius: 100vh;
+    margin: 0px 2px;
+    cursor: pointer;
+  }
+  .banners .controle label:hover {
+    background-color: #000;
+  }
+  .banners .controle label.active {
+    background-color: #e3202b;
+  }
 }
 @media all and (min-width: 1100px) {
   .logos .container {
@@ -686,6 +727,14 @@ body {
 @media all and (min-width: 1100px) {
   .logos .lista a img {
     height: 130px;
+  }
+}
+@media all and (min-width: 1024px) {
+  .banners a img.mobile {
+    display: none;
+  }
+  .banners a img.desktop {
+    display: inline-block;
   }
 }
 /*********************************** COMO ***********************************/

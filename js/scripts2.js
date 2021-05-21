@@ -28,6 +28,24 @@ $(document).ready(function(e) {
         });
     });
     
+    /******************* BANNERS ********************/
+	var cA = 1;
+	var cT = $(".banners .ban-img").length;
+	var cI = setInterval(function(){
+		cA = cA >= cT ? 1 : cA+1;
+		cTroca(cA);
+	}, 6000);
+    function cTroca(cp){
+        $("#ban-inp-"+cp).prop( "checked", true );
+		$(".controle label").removeClass('active');
+		$(".controle label[for=ban-inp-"+cp+"]").addClass('active');
+    }
+	$(".controle label").click(function(){
+		$(".controle label").removeClass('active');
+        $(this).addClass('active');
+		clearInterval(cI);
+	});
+    
     /******************* FILTROS CARDS ********************/
     var limite = $(window).width() >= 1200 ? 18 : 6;
     var filtros = [];

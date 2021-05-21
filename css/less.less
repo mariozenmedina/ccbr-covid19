@@ -307,7 +307,7 @@ html, body{ overflow-x: hidden !important; }
     }
 }
 
-/*********************************** LOGOS ***********************************/
+/*********************************** LOGOS & BANNERS ***********************************/
 @media all{
     .logos{
         padding-top: 80px; padding-bottom: 80px; position: relative;
@@ -320,6 +320,34 @@ html, body{ overflow-x: hidden !important; }
                 @media(min-width:1100px){
                     img{ height: 130px; }
                 }
+            }
+        }
+    }
+    .banners{
+        .tc; padding-top: 80px;
+        a{
+            display: none; .tc;
+            img{
+                .ib; max-width: 100%;
+                &.desktop{ display: none; }
+                @media(min-width:1024px){
+                    &.mobile{ display: none; }
+                    &.desktop{ .ib; }
+                }
+            }
+        }
+        input{
+            display: none !important;
+            &:checked + a{
+                .ib;
+            }
+        }
+        .controle{
+            .tc; padding-top: 20px;
+            label{
+                .ib; width: 15px; height: 15px; border: solid 3px @vermelho; .bbranco; .rd100; margin: 0px 2px; cursor: pointer;
+                &:hover{ .bpreto; }
+                &.active{ .bvermelho; }
             }
         }
     }
